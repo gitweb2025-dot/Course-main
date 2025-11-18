@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Course</title>
+
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google fonts Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+
+    <!-- Aos Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+        integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tailwind Css  -->
+    <link rel="stylesheet" href="./src/output.css" />
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+
+        body {
+            font-family: "Josefin Sans", sans-serif;
+            overflow-x: hidden;
+        }
+    </style>
+
+</head>
+
+<body class="antialiased text-black">
+
+    <section class="py-8 px-4 overflow-hidden text-center h-screen">
+        <div data-aos="zoom-in" class="flex flex-col items-center justify-center h-screen text-sm">
+            <h1 class="text-4xl md:text-8xl font-bold text-primary">404</h1>
+            <div class="h-1 w-16 rounded bg-primary my-5"></div>
+            <p class="text-2xl md:text-3xl font-bold text-gray-800">Page Not Found</p>
+            <p class="text-sm md:text-base mt-4 text-gray-500 max-w-md text-center">The page you are looking for might
+                have been removed, had its name changed, or is temporarily unavailable.</p>
+            <div class="flex items-center gap-4 mt-6">
+                <a href="./index.html"
+                    class="bg-primary px-6 py-3 text-white rounded-md transform hover:scale-95 transition-all duration-500 ease-out text-lg">
+                    Return Home
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Aos Animation  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+        integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!--  script -->
+    <script>
+        AOS.init({
+            duration: 800,
+            delay: 200, // default delay for all elements
+            once: false,
+            mirror: true,
+        });
+    </script>
+
+</body>
+
+</html>

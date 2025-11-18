@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course</title>
+
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google fonts Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+
+    <!-- Aos Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+        integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tailwind Css  -->
+    <link rel="stylesheet" href="../src/output.css" />
+
+    <!-- Chart Js  -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+
+        body {
+            font-family: "Josefin Sans", sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Hamburger animation */
+        .hamburger span {
+            display: block;
+            width: 1.5rem;
+            height: 0.125rem;
+            margin: 0.4rem auto;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: black;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile menu slide + fade */
+        .mobile-menu {
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-10px);
+            overflow: hidden;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .mobile-menu.open {
+            max-height: 500px;
+            /* enough for nav links */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown-enter {
+            animation: dropdown 0.25s ease forwards;
+        }
+
+        @keyframes dropdown {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 backdrop-blur w-full mx-auto">
+        <div class="flex items-center justify-between px-4 h-16 bg-white border border-black/10">
+            <!-- Logo -->
+            <a class="" href="./index.html"><img class="h-10 object-cover" src="../assets/logo.webp" alt="logo" /></a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-2 md:space-x-3 lg:space-x-5 text-sm font-medium">
+                <!-- Home with Dropdown -->
+                <div class="relative">
+                    <!-- Parent Button -->
+                    <button class="relative inline-block cursor-pointer">
+                        <a href="./index.html">Home</a>
+                        <i id="homeToggle" class="fa-solid fa-caret-down"></i>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <ul id="homeMenu" class="absolute hidden  shadow-lg mt-2 rounded w-40">
+                        <!-- Home 2 -->
+                        <li>
+                            <a href="" class="block px-4 py-2  bg-white z-40">
+                                Home 2
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- About Us -->
+                <a href="./about.html" class="relative inline-block">
+                    About Us
+                </a>
+
+                <!-- Services -->
+                <a href="./service.html" class="relative inline-block ">
+                    Services
+                </a>
+                <!-- Courses -->
+                <a href="./courses.html" class="relative inline-block">
+                    Courses
+                </a>
+                <!-- Contact -->
+                <a href="./contact.html" class="relative inline-block">
+                    Contact
+                </a>
+                <!-- Dashboard -->
+                <a href="./dashboard.html"
+                    class="relative inline-block text-primary bg-primary/30 px-6 py-2 rounded-full">
+                    Dashboard
+                </a>
+            </nav>
+
+            <div class="flex text-sm gap-4 font-medium">
+                <!-- Profile -->
+                <div class="relative">
+                    <div>
+                        <button id="profileBtn" class="flex items-center gap-2 focus:outline-none cursor-pointer">
+                            <img src="" class="w-10 h-10 rounded-full object-cover object-top" />
+                            <span class="hidden sm:block">Alex ▾</span>
+                        </button>
+                    </div>
+
+                    <div id="dropdownMenu" class="hidden absolute right-0 top-14 bg-white rounded-xl dropdown-enter">
+                        <div class="flex flex-col py-2">
+                            <a href="./index.html"
+                                class="px-4 py-2 w-full text-left text-sm text-red-500 transition cursor-pointer ">
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Hamburger -->
+                <button id="hamburger" class="hamburger cursor-pointer md:hidden focus:outline-none" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav id="mobileMenu" class="mobile-menu lg:hidden border-t border-slate-200/10 shadow-md">
+            <ul class="flex flex-col space-y-4 p-4 text-sm font-medium">
+                <!-- Home dropDown  -->
+                <div class="relative">
+                    <button class="flex items-center gap-1 w-full text-left  transition-colors lg:hidden">
+                        <a href="./index.html">Home</a>
+                        <i id="mobileToggle" class="fa-solid fa-caret-down"></i>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <ul id="mobileLink" class="hidden mt-2 rounded w-full md:absolute">
+
+                        <li>
+                            <a href="" class="block px-2 py-2 ">
+                                Home 2
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- About Us -->
+                <li>
+                    <a href="./about.html" class="nav-link block  transition-colors">About Us</a>
+                </li>
+                <!-- Services -->
+                <li>
+                    <a href="./service.html" class="nav-link block  transition-colors">Services</a>
+                </li>
+                <!-- Courses -->
+                <li>
+                    <a href="./courses.html" class="nav-link block  transition-colors">Courses</a>
+                </li>
+                <!-- Contact -->
+                <li>
+                    <a href="./contact.html" class="nav-link block  transition-colors">Contact</a>
+                </li>
+                <!-- Dashboard -->
+                <li>
+                    <a href="./contact.html" class="nav-link block  transition-colors">Dashboard</a>
+                </li>
+                <!-- Login -->
+                <li>
+                    <a href="" class="flex items-center gap-2 nav-link hover:text-gray-800 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                        Login</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Dropdown script  -->
+        <script>
+            const homeToggle = document.getElementById("homeToggle");
+            const homeMenu = document.getElementById("homeMenu");
+
+            homeToggle.addEventListener("click", () => {
+                homeMenu.classList.toggle("hidden");
+            });
+
+            const mobileToggle = document.getElementById("mobileToggle");
+            const mobileLink = document.getElementById("mobileLink");
+
+            // Home dropdown toggle (mobile only)
+            mobileToggle.addEventListener("click", () => {
+                mobileLink.classList.toggle("hidden");
+            });
+
+            // Optional: close menu if clicked outside
+            window.addEventListener("click", (e) => {
+                if (!homeToggle.contains(e.target) && !homeMenu.contains(e.target)) {
+                    homeMenu.classList.add("hidden");
+                }
+            });
+        </script>
+    </header>
+
+    <!-- Header -->
+    <main class="py-6 px-4 overflow-hidden">
+        <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">Welcome Back!</h1>
+        <p class="text-gray-600">Welcome to your training analytics dashboard</p>
+    </main>
+
+    <!-- KPI Section -->
+    <section
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-6 mb-10 px-4 py-6  overflow-hidden">
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition border border-primary/20">
+            <p class="text-gray-600">Active Trainees</p>
+            <h3 class="text-4xl font-bold mt-2 text-primary">320</h3>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition border border-primary/20">
+            <p class="text-gray-600">New Enrollments</p>
+            <h3 class="text-4xl font-bold mt-2 text-primary">58</h3>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition border border-primary/20">
+            <p class="text-gray-600">Available Courses</p>
+            <h3 class="text-4xl font-bold mt-2 text-primary">42</h3>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition border border-primary/20">
+            <p class="text-gray-600">Total Trainers</p>
+            <h3 class="text-4xl font-bold mt-2 text-primary">12</h3>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition border border-primary/20">
+            <p class="text-gray-600">Monthly Visitors</p>
+            <h3 class="text-4xl font-bold mt-2 text-primary">14.2k</h3>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition border border-primary/20">
+            <p class="text-gray-600">Total Revenue</p>
+            <h3 class="text-4xl font-bold mt-2 text-primary">$92.4k</h3>
+        </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 px-4 overflow-hidden py-6">
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-primary/20 md:col-span-2">
+            <h2 class="text-xl font-semibold mb-4 text-primary">Monthly Income</h2>
+            <canvas id="incomeChart"></canvas>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-primary/20">
+            <h2 class="text-xl font-semibold mb-4 text-primary">Course Distribution</h2>
+            <canvas id="coursePie"></canvas>
+        </div>
+    </section>
+
+    <!-- Additional Feature Cards -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 px-4 overflow-hidden py-6">
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-primary/20 hover:shadow-xl transition">
+            <h2 class="text-xl font-semibold text-primary mb-3">Student Satisfaction</h2>
+            <p class="text-gray-700 text-sm mb-2">Based on feedback from 2,400 trainees.</p>
+            <h3 class="text-4xl font-bold text-primary">94%</h3>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-primary/20 hover:shadow-xl transition">
+            <h2 class="text-xl font-semibold text-primary mb-3">Support Tickets</h2>
+            <p class="text-gray-700 text-sm mb-2">Resolved within 24 hours.</p>
+            <h3 class="text-4xl font-bold text-primary">128</h3>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-primary/20 hover:shadow-xl transition">
+            <h2 class="text-xl font-semibold text-primary mb-3">Platform Uptime</h2>
+            <p class="text-gray-700 text-sm mb-2">Last 12 months.</p>
+            <h3 class="text-4xl font-bold text-primary">99.9%</h3>
+        </div>
+    </section>
+
+    <!-- New Modern Sections -->
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10 px-4 overflow-hidden py-6">
+
+        <!-- Performance Overview -->
+        <div class="bg-white px-3 py-6 md:p-6 rounded-2xl shadow-md border border-primary/20">
+            <h2 class="text-xl font-semibold text-primary mb-4">Performance Overview</h2>
+            <ul class="space-y-4 text-gray-700">
+                <li>✔ 92% Course Completion Rate</li>
+                <li>✔ 4.8/5 Average Trainer Rating</li>
+                <li>✔ 120+ Daily Platform Visits</li>
+            </ul>
+        </div>
+
+        <!-- Top Trainers -->
+        <div class="bg-white px-3 py-6 md:p-6 rounded-2xl shadow-md border border-primary/20">
+            <h2 class="text-xl font-semibold text-primary mb-4">Top Trainers</h2>
+            <ul class="space-y-4">
+                <li class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-gray-300 rounded-full"></div>
+                    <p><strong>Michael Lee</strong> – Python Expert</p>
+                </li>
+                <li class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-gray-300 rounded-full"></div>
+                    <p><strong>Amanda Ray</strong> – UI/UX Specialist</p>
+                </li>
+                <li class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-gray-300 rounded-full"></div>
+                    <p><strong>Chris Paul</strong> – Web Security Trainer</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Upcoming Events -->
+        <div class="bg-white px-3 py-6 md:p-6 rounded-2xl shadow-md border border-primary/20">
+            <h2 class="text-xl font-semibold text-primary mb-4">Upcoming Events</h2>
+            <ul class="space-y-3">
+                <li class="p-3 bg-primary/10 rounded-xl">Trainer Meetup – Feb 20</li>
+                <li class="p-3 bg-primary/10 rounded-xl">AI Workshop – Mar 02</li>
+                <li class="p-3 bg-primary/10 rounded-xl">Course Review Meeting – Mar 10</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <!-- Activity + Announcements -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10 px-4 overflow-hidden py-6">
+
+        <!-- Activity Timeline -->
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-primary/20">
+            <h2 class="text-xl font-semibold text-primary mb-4">Activity Timeline</h2>
+            <div class="space-y-6 relative border-l-2 border-primary/40 pl-6">
+                <div>
+                    <p class="text-gray-900 font-semibold">New Course Added</p>
+                    <p class="text-gray-600 text-sm">"Full Stack 2025" – 2 hours ago</p>
+                </div>
+                <div>
+                    <p class="text-gray-900 font-semibold">Trainer Assigned</p>
+                    <p class="text-gray-600 text-sm">Sarah Miller – 5 hours ago</p>
+                </div>
+                <div>
+                    <p class="text-gray-900 font-semibold">50 New Enrollments</p>
+                    <p class="text-gray-600 text-sm">Yesterday</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Announcements -->
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-primary/20">
+            <h2 class="text-xl font-semibold text-primary mb-4">Announcements</h2>
+            <ul class="space-y-4">
+                <li class="p-4 bg-primary/10 rounded-xl">New Dashboard update coming soon!</li>
+                <li class="p-4 bg-primary/10 rounded-xl">All trainers meeting next Friday.</li>
+                <li class="p-4 bg-primary/10 rounded-xl">Security patch deployed successfully.</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <script>
+        // Income Chart
+        new Chart(document.getElementById('incomeChart'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                datasets: [{
+                    label: 'Income',
+                    data: [1500, 2200, 2800, 3100, 3600, 4000, 4500, 4700, 5200],
+                    borderColor: '#1363df',
+                    backgroundColor: '#1363df20',
+                    borderWidth: 3,
+                    tension: 0.4
+                }]
+            }
+        });
+
+        // Pie Chart
+        new Chart(document.getElementById('coursePie'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Design', 'Dev', 'Marketing', 'AI'],
+                datasets: [{
+                    data: [12, 18, 10, 7],
+                    backgroundColor: [
+                        '#1363df', // Blue
+                        '#ff6b6b', // Red
+                        '#6fda44', // Green
+                        '#f7b731', // Yellow
+
+                    ],
+                }]
+            }
+        });
+    </script>
+
+
+    <!-- FOOTER -->
+    <footer class="text-center text-gray-500 border-t border-gray-300 text-sm md:text-lg">
+        <div>
+            <p class="pt-4 pb-4">
+                Copyright 2025 © <a href="./404.html">Stackly</a>. All Right
+                Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const links = mobileMenu.querySelectorAll(".nav-link");
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            mobileMenu.classList.toggle("open");
+        });
+
+        links.forEach((link) => {
+            link.addEventListener("click", () => {
+                hamburger.classList.remove("active");
+                mobileMenu.classList.remove("open");
+            });
+        });
+    </script>
+
+    <script>
+        // Profile dropdown
+        const profileBtn = document.getElementById("profileBtn");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        profileBtn.addEventListener("click", () =>
+            dropdownMenu.classList.toggle("hidden")
+        );
+        document.addEventListener("click", (e) => {
+            if (!profileBtn.contains(e.target) && !dropdownMenu.contains(e.target))
+                dropdownMenu.classList.add("hidden");
+        });
+    </script>
+</body>
+
+</html>

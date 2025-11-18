@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Course</title>
+
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google fonts Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+
+    <!-- Aos Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+        integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tailwind Css  -->
+    <link rel="stylesheet" href="../src/output.css" />
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+
+        body {
+            font-family: "Josefin Sans", sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Hamburger animation */
+        .hamburger span {
+            display: block;
+            width: 1.5rem;
+            height: 0.125rem;
+            margin: 0.4rem auto;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: currentColor;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile menu slide + fade */
+        .mobile-menu {
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-10px);
+            overflow: hidden;
+            transition: all 0.8s ease-in-out;
+        }
+
+        .mobile-menu.open {
+            max-height: 500px;
+            /* enough for nav links */
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="antialiased text-black">
+    <!-- Navbar  -->
+    <header class="sticky top-0 z-50 backdrop-blur w-full mx-auto">
+        <div class="flex items-center justify-between px-4 h-16 bg-white border border-black/10">
+            <!-- Logo -->
+            <a class="" href="./index.html">
+                <img class="h-8 w-full" src="../assets/logo.webp" alt="logo" />
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-2 md:space-x-3 lg:space-x-5 text-sm font-medium">
+                <!-- Home with Dropdown -->
+                <div class="relative">
+                    <!-- Parent Button -->
+                    <button class="relative inline-block cursor-pointer ">
+                        <a href="./index.html">Home</a>
+                        <i id="homeToggle" class="fa-solid fa-caret-down"></i>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <ul id="homeMenu" class="absolute hidden shadow-lg mt-2 rounded w-32">
+                        <!-- Home 2 -->
+                        <li>
+                            <a href="./404.html" class="block px-4 py-2 bg-white z-40"> Home 2 </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- About Us -->
+                <a href="./about.html" class="relative inline-block"> About Us </a>
+                <!-- Services -->
+                <a href="./service.html"
+                    class="relative inline-block text-primary bg-primary/30 px-6 py-2 rounded-full"> Services </a>
+                <!-- Courses -->
+                <a href="./courses.html" class="relative inline-block"> Courses </a>
+                <!-- Contact -->
+                <a href="./contact.html" class="relative inline-block"> Contact </a>
+                <!-- Dashboard -->
+                <a href="./dashboard.html" class="relative inline-block"> Dashboard </a>
+            </nav>
+
+            <div class="hidden lg:flex text-sm gap-4 font-medium">
+                <a class="flex items-center gap-2 px-2 py-2 rounded-3xl transform hover:scale-95 transition duration-200 ease-out text-black"
+                    href="./signin.html"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor" class="size-7">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Hamburger -->
+            <button id="hamburger" class="hamburger cursor-pointer lg:hidden focus:outline-none" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav id="mobileMenu" class="mobile-menu lg:hidden border-t border-slate-200/10 ">
+            <ul class="flex flex-col space-y-4 p-4 text-sm font-medium bg-white shadow-md">
+                <!-- Home dropDown  -->
+                <div class="relative">
+                    <button class="flex items-center gap-1 w-full text-left lg:hidden">
+                        <a href="./index.html">Home</a>
+                        <i id="mobileToggle" class="fa-solid fa-caret-down"></i>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <ul id="mobileLink" class="hidden mt-2 rounded w-full md:absolute">
+                        <!-- Home 2  -->
+                        <li>
+                            <a href="./404.html" class="block px-2 py-2">
+                                Home 2
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- About Us -->
+                <li>
+                    <a href="./about.html" class="nav-link block hover:text-gray-800 transition-colors">About Us</a>
+                </li>
+                <!-- Services -->
+                <li>
+                    <a href="./service.html" class="nav-link block hover:text-gray-800 transition-colors">Services</a>
+                </li>
+                <!-- Courses -->
+                <li>
+                    <a href="./courses.html" class="nav-link block hover:text-gray-800 transition-colors">Courses</a>
+                </li>
+                <!-- Contact -->
+                <li>
+                    <a href="./contact.html" class="nav-link block hover:text-gray-800 transition-colors">Contact</a>
+                </li>
+                <!-- Dashboard -->
+                <li>
+                    <a href="./dashboard.html"
+                        class="nav-link block hover:text-gray-800 transition-colors">Dashboard</a>
+                </li>
+                <!-- login -->
+                <li>
+                    <a href="./signin.html"
+                        class="flex items-center gap-2 nav-link hover:text-gray-800 transition-colors"><svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                        Login</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Dropdown script  -->
+        <script>
+            const homeToggle = document.getElementById("homeToggle");
+            const homeMenu = document.getElementById("homeMenu");
+
+            homeToggle.addEventListener("click", () => {
+                homeMenu.classList.toggle("hidden");
+            });
+
+            const mobileToggle = document.getElementById("mobileToggle");
+            const mobileLink = document.getElementById("mobileLink");
+
+            // Home dropdown toggle (mobile only)
+            mobileToggle.addEventListener("click", () => {
+                mobileLink.classList.toggle("hidden");
+            });
+
+            // Optional: close menu if clicked outside
+            window.addEventListener("click", (e) => {
+                if (!homeToggle.contains(e.target) && !homeMenu.contains(e.target)) {
+                    homeMenu.classList.add("hidden");
+                }
+            });
+        </script>
+    </header>
+
+    <!-- HERO -->
+    <section class="relative bg-linear-to-br from-primary/30 to-white px-4 py-8 overflow-hidden md:py-24 ">
+        <div class="mx-auto grid md:grid-cols-2 gap-10 items-center">
+            <div>
+                <h1 class="text-2xl md:text-3xl xl:text-5xl font-semibold uppercase font-primary leading-tight">Transform Your Learning Experience</h1>
+                <p class="mt-4 text-lg opacity-90">Our platform provides world‑class services, smart learning tools,
+                    AI‑powered
+                    recommendations, and seamless course experience.</p>
+                <button
+                    class="mt-6 px-6 py-3 bg-white text-indigo-700 font-semibold rounded-xl shadow-lg hover:scale-105 transition">Get
+                    Started</button>
+            </div>
+            <div>
+                <img src="../assets/Customer-Support.webp"
+                    class="rounded-xl shadow-2xl" />
+            </div>
+        </div>
+    </section>
+
+    <!-- OFFER SECTION -->
+    <section class="py-20 px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Limited‑Time Exclusive Offers</h2>
+        <p class="max-w-2xl mx-auto opacity-90 mb-10 text-lg">Boost your learning journey with special discounted
+            bundles,
+            premium access, and AI‑powered learning tools.</p>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div
+                class="bg-white/10 backdrop-blur-lg p-8 rounded-2xl shadow-xl hover:scale-105 transition cursor-pointer">
+                <h3 class="text-2xl font-semibold mb-2">🔥 50% Off Premium Plan</h3>
+                <p class="opacity-90 mb-4">Unlimited course access, certificates, and priority support.</p>
+                <button class="px-5 py-2 bg-white text-indigo-700 font-medium rounded-lg">Claim Offer</button>
+            </div>
+
+            <div
+                class="bg-white/10 backdrop-blur-lg p-8 rounded-2xl shadow-xl hover:scale-105 transition cursor-pointer">
+                <h3 class="text-2xl font-semibold mb-2">🎁 Free Add‑on Modules</h3>
+                <p class="opacity-90 mb-4">Get free AI modules when enrolling in any technical course.</p>
+                <button class="px-5 py-2 bg-white text-indigo-700 font-medium rounded-lg">Get Bonus</button>
+            </div>
+
+            <div
+                class="bg-white/10 backdrop-blur-lg p-8 rounded-2xl shadow-xl hover:scale-105 transition cursor-pointer">
+                <h3 class="text-2xl font-semibold mb-2">💼 Team Bundle Offer</h3>
+                <p class="opacity-90 mb-4">Enroll your team & save up to 60% with enterprise plans.</p>
+                <button class="px-5 py-2 bg-white text-indigo-700 font-medium rounded-lg">Explore Plans</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="py-20 px-6 max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Our Premium Services</h2>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition">
+                <div class="text-indigo-600 text-4xl mb-4">
+                    <!-- Heroicon: Pencil Square -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-12 h-12">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M16.862 3.487a2.25 2.25 0 0 1 3.182 3.182L7.125 19.587l-4.122.458a.75.75 0 0 1-.828-.828l.458-4.122L16.862 3.487z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Course Creation Support</h3>
+                <p class="text-gray-600">We help instructors build engaging course content with tools, templates, and
+                    expert
+                    guidance.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition">
+                <div class="text-indigo-600 text-4xl mb-4">
+                    <!-- Heroicon: Sparkles -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-12 h-12">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 3v2.25M12 18.75V21M4.219 4.219l1.591 1.591M18.19 18.19l1.591 1.591M3 12h2.25M18.75 12H21M4.219 19.781l1.591-1.591M18.19 5.81l1.591-1.591M8.25 12A3.75 3.75 0 1 0 15.75 12a3.75 3.75 0 1 0-7.5 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">AI‑Powered Recommendations</h3>
+                <p class="text-gray-600">Learners receive personalized course suggestions based on interests and
+                    progress.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition">
+                <div class="text-indigo-600 text-4xl mb-4">
+                    <!-- Heroicon: Chart Bar -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-12 h-12">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M9 17V9m4 8v-5m4 5v-9" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Advanced Analytics</h3>
+                <p class="text-gray-600">Real‑time insights on learner engagement, performance, and course growth.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition">
+                <div class="text-indigo-600 text-4xl mb-4">
+                    <!-- Heroicon: Shield Check -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-12 h-12">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 12.75L11.25 15 15 9.75m3-3.337v4.684c0 5.052-3.657 9.764-8.25 10.903-4.593-1.139-8.25-5.851-8.25-10.903V6.413c0-.943.633-1.764 1.553-2.022l6-1.714a2.25 2.25 0 0 1 1.394 0l6 1.714A2.25 2.25 0 0 1 18 6.413z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Secure Payments</h3>
+                <p class="text-gray-600">Seamless and secure transactions with multiple supported payment gateways.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition">
+                <div class="text-indigo-600 text-4xl mb-4">
+                    <!-- Heroicon: Headphones -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-12 h-12">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 12a9 9 0 1 1 18 0v5.25A2.25 2.25 0 0 1 18.75 19.5H17.25A2.25 2.25 0 0 1 15 17.25v-4.5A2.25 2.25 0 0 1 17.25 10.5h.75m-12 0h.75A2.25 2.25 0 0 1 9 12.75v4.5A2.25 2.25 0 0 1 6.75 19.5H5.25A2.25 2.25 0 0 1 3 17.25V12z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">24/7 Learner Support</h3>
+                <p class="text-gray-600">Our global support team ensures learners get help any time of the day.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition">
+                <div class="text-indigo-600 text-4xl mb-4">
+                    <!-- Heroicon: Globe Alt -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-12 h-12">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zm0 0c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-7.5 9h15" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Multi‑Language Support</h3>
+                <p class="text-gray-600">Courses and dashboards available in multiple international languages.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFINITE CAROUSEL -->
+    <section class="bg-white py-20">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Trusted by Leading Brands</h2>
+
+        <div class="overflow-hidden relative">
+            <div id="carousel" class="flex gap-10 whitespace-nowrap px-4">
+                <img src="https://dummyimage.com/180x80/000/fff&text=Brand+1" class="h-20 object-contain" />
+                <img src="https://dummyimage.com/180x80/000/fff&text=Brand+2" class="h-20 object-contain" />
+                <img src="https://dummyimage.com/180x80/000/fff&text=Brand+3" class="h-20 object-contain" />
+                <img src="https://dummyimage.com/180x80/000/fff&text=Brand+4" class="h-20 object-contain" />
+                <img src="https://dummyimage.com/180x80/000/fff&text=Brand+5" class="h-20 object-contain" />
+                <!-- duplicate for infinite loop -->
+                <img src="https://dummyimage.com/180x80/000/fff&text=Brand+1" class="h-20 object-contain" />
+                <img src="https://dummyimage.com/180x80/000/fff&text=Brand+2" class="h-20 object-contain" />
+                <img src="https://dummyimage.com/180x80/000/fff&text=Brand+3" class="h-20 object-contain" />
+                <img src="https://dummyimage.com/180x80/000/fff&text=Brand+4" class="h-20 object-contain" />
+                <img src="https://dummyimage.com/180x80/000/fff&text=Brand+5" class="h-20 object-contain" />
+                <!-- duplicate for infinite loop -->
+                <img src="https://dummyimage.com/180x80/000/fff&text=Brand+1" class="h-20 object-contain" />
+                <img src="https://dummyimage.com/180x80/000/fff&text=Brand+2" class="h-20 object-contain" />
+                <img src="https://dummyimage.com/180x80/000/fff&text=Brand+3" class="h-20 object-contain" />
+                <img src="https://dummyimage.com/180x80/000/fff&text=Brand+4" class="h-20 object-contain" />
+                <img src="https://dummyimage.com/180x80/000/fff&text=Brand+5" class="h-20 object-contain" />
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Robust infinite carousel using transform + requestAnimationFrame
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.getElementById('carousel');
+            if (!carousel) return;
+
+            // ensure the track is wide enough by duplicating slides if not already
+            // (the markup already duplicates, but this guards against one-time load issues)
+            const originalCount = carousel.children.length / 2;
+            if (originalCount < 3) {
+                const items = Array.from(carousel.children);
+                items.forEach(i => carousel.appendChild(i.cloneNode(true)));
+            }
+
+            carousel.style.willChange = 'transform';
+            let pos = 0; // px
+            let rafId = null;
+            let paused = false;
+
+            // speed in px per frame (will be adjusted below)
+            let speed = window.innerWidth < 640 ? 0.6 : window.innerWidth < 1024 ? 0.9 : 1.2;
+
+            function step() {
+                if (!paused) {
+                    pos -= speed;
+                    const half = carousel.scrollWidth / 2;
+                    if (Math.abs(pos) >= half) {
+                        // loop back seamlessly
+                        pos = 0;
+                    }
+                    carousel.style.transform = `translateX(${pos}px)`;
+                }
+                rafId = requestAnimationFrame(step);
+            }
+
+            // start
+            rafId = requestAnimationFrame(step);
+
+            // pause on hover/focus
+            carousel.addEventListener('mouseenter', () => paused = true);
+            carousel.addEventListener('mouseleave', () => paused = false);
+            carousel.addEventListener('focusin', () => paused = true);
+            carousel.addEventListener('focusout', () => paused = false);
+
+            // adjust speed on resize
+            window.addEventListener('resize', () => {
+                speed = window.innerWidth < 640 ? 0.6 : window.innerWidth < 1024 ? 0.9 : 1.2;
+            });
+
+            // cleanup on unload
+            window.addEventListener('beforeunload', () => { if (rafId) cancelAnimationFrame(rafId); });
+        });
+    </script>
+
+    <!-- footer -->
+    <footer class="px-4 overflow-hidden">
+        <div class="flex justify-between flex-wrap w-full md:gap-20 gap-8 pb-6" data-aos="fade-up" data-aos-delay="150">
+            <div class="md:max-w-96 flex flex-col items-start space-y-2">
+                <img class="h-8" src="../assets/logo.webp" alt="logo" />
+                <p class="mt-2 text-lg">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting
+                    industry. Lorem Ipsum has been the industry's standard dummy text
+                    ever since the 1500s.
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:items-center lg:justify-center">
+                <div class="flex flex-col text-lg space-y-2.5 md:px-8">
+                    <h2 class="font-semibold mb-5 text-primary uppercase">Easier Acces</h2>
+                    <a class="hover:text-slate-600 transition" href="./index.html">Home</a>
+                    <a class="hover:text-slate-600 transition" href="./about.html">About us</a>
+                    <a class="hover:text-slate-600 transition" href="./service.html">Services<span
+                            class="text-xs text-white bg-gray-600 rounded-bl-xl rounded-tr-xl ml-2 px-2 py-1">New</span></a>
+                    <a class="hover:text-slate-600 transition" href="./courses.html">Courses</a>
+                    <a class="hover:text-slate-600 transition" href="./contact.html">Contact us</a>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="font-semibold mb-5 text-lg text-primary uppercase">
+                    Subscribe to our newsletter
+                </h2>
+                <div class="text-lg space-y-6 max-w-sm">
+                    <p>
+                        The latest news, articles, and resources, sent to your inbox
+                        weekly.
+                    </p>
+                    <form id="sub-form" method="get" action="./404.html"
+                        class="flex items-center justify-center gap-2 p-2 rounded-full bg-primary/10">
+                        <input pattern=".+@gmail\.com$" title="Email must end with @gmail.com" required
+                            class="focus:ring-0 outline-none w-full max-w-64 py-2 rounded px-2 " type="email"
+                            placeholder="Enter your email" />
+                        <button type="submit"
+                            class="bg-primary px-4 py-2 rounded-full cursor-pointer transform hover:scale-95 transition duration-500 ease-out text-white">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="flex items-start">
+                <div class="">
+                    <h2 class="font-semibold mb-5 text-lg text-primary uppercase">Get in touch</h2>
+                    <div class="text-lg space-y-2 flex flex-col items-start">
+                        <a href="">+1-212-456-7890</a>
+                        <a href="">contact@example.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="overflow-hidden">
+            <!-- Google Map -->
+            <div data-aos="fade-up" data-aos-delay="200" class="rounded-2xl w-full overflow-hidden shadow-lg mb-3">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.1616097152896!2d78.1739798!3d11.682956599999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babefef7fd970bb%3A0xe11aef1a71994f9!2sStackly!5e0!3m2!1sen!2sin!4v1755667813665!5m2!1sen!2sin"
+                    width="100%" height="250" style="border: 0" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-center text-center border-t border-gray-500/30">
+            <div>
+                <p class="pt-4 text-lg pb-4">
+                    Copyright 2025 © <a href="./404.html">Stackly</a>. All Right
+                    Reserved.
+                </p>
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- Aos Animation  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+        integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!--  script -->
+    <script>
+        AOS.init({
+            duration: 800,
+            delay: 200, // default delay for all elements
+            once: false,
+            mirror: true,
+        });
+
+        // sub-form reset 
+        const form = document.querySelector("#sub-form");
+        form.addEventListener('submit', () => {
+            form.reset();
+        })
+
+        // mobile script
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const links = mobileMenu.querySelectorAll(".nav-link");
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            mobileMenu.classList.toggle("open");
+        });
+
+        links.forEach((link) => {
+            link.addEventListener("click", () => {
+                hamburger.classList.remove("active");
+                mobileMenu.classList.remove("open");
+            });
+        });
+    </script>
+</body>
+
+</html>

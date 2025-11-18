@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Course</title>
+
+    <!-- Font Awesome Cdn Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Google fonts Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Aos Cdn Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Tailwind Css  -->
+    <link rel="stylesheet" href="./src/output.css" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+
+      body {
+        font-family: "Josefin Sans", sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* Hamburger animation */
+      .hamburger span {
+        display: block;
+        width: 1.5rem;
+        height: 0.125rem;
+        margin: 0.4rem auto;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background-color: currentColor;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      /* Mobile menu slide + fade */
+      .mobile-menu {
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(-10px);
+        overflow: hidden;
+        transition: all 0.8s ease-in-out;
+      }
+
+      .mobile-menu.open {
+        max-height: 500px;
+        /* enough for nav links */
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+
+  <body class="antialiased text-black">
+    <!-- Navbar  -->
+    <header class="sticky top-0 z-50 backdrop-blur w-full mx-auto">
+      <div
+        class="flex items-center justify-between px-4 h-16 bg-white border border-black/10"
+      >
+        <!-- Logo -->
+        <a class="" href="./index.html">
+          <img class="h-8 w-full" src="./assets/logo.webp" alt="logo" />
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav
+          class="hidden md:flex items-center space-x-2 md:space-x-3 lg:space-x-5 text-sm font-medium"
+        >
+          <!-- Home with Dropdown -->
+          <div class="relative">
+            <!-- Parent Button -->
+            <button class="relative inline-block cursor-pointer">
+              <a href="./index.html">Home</a>
+              <i id="homeToggle" class="fa-solid fa-caret-down"></i>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <ul
+              id="homeMenu"
+              class="absolute hidden shadow-lg mt-2 rounded w-32"
+            >
+              <!-- Home 2 -->
+              <li>
+                <a href="./404.html" class="block px-4 py-2 bg-white z-40">
+                  Home 2
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- About Us -->
+          <a href="./about.html" class="relative inline-block"> About Us </a>
+          <!-- Services -->
+          <a href="./service.html" class="relative inline-block"> Services </a>
+          <!-- Courses -->
+          <a href="./courses.html" class="relative inline-block"> Courses </a>
+          <!-- Contact -->
+          <a
+            href="./contact.html"
+            class="relative inline-block text-primary bg-primary/30 px-6 py-2 rounded-full"
+          >
+            Contact
+          </a>
+          <!-- Dashboard -->
+          <a href="./dashboard.html" class="relative inline-block">
+            Dashboard
+          </a>
+        </nav>
+
+        <div class="hidden lg:flex text-sm gap-4 font-medium">
+          <a
+            class="flex items-center gap-2 px-2 py-2 rounded-3xl transform hover:scale-95 transition duration-200 ease-out text-black"
+            href="./signin.html"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-7"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Hamburger -->
+        <button
+          id="hamburger"
+          class="hamburger cursor-pointer lg:hidden focus:outline-none"
+          aria-label="Menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <nav
+        id="mobileMenu"
+        class="mobile-menu lg:hidden border-t border-slate-200/10"
+      >
+        <ul
+          class="flex flex-col space-y-4 p-4 text-sm font-medium bg-white shadow-md"
+        >
+          <!-- Home dropDown  -->
+          <div class="relative">
+            <button
+              class="flex items-center gap-1 w-full text-left hover:text-gray-800 transition-colors lg:hidden"
+            >
+              <a href="./index.html">Home</a>
+              <i id="mobileToggle" class="fa-solid fa-caret-down"></i>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <ul id="mobileLink" class="hidden mt-2 rounded w-full md:absolute">
+              <!-- Home 2  -->
+              <li>
+                <a
+                  href="./404.html"
+                  class="block px-2 py-2 hover:bg-gray-50 hover:text-gray-800"
+                >
+                  Home 2
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- About Us -->
+          <li>
+            <a
+              href="./about.html"
+              class="nav-link block hover:text-gray-800 transition-colors"
+              >About Us</a
+            >
+          </li>
+          <!-- Services -->
+          <li>
+            <a
+              href="./service.html"
+              class="nav-link block hover:text-gray-800 transition-colors"
+              >Services</a
+            >
+          </li>
+          <!-- Courses -->
+          <li>
+            <a
+              href="./courses.html"
+              class="nav-link block hover:text-gray-800 transition-colors"
+              >Courses</a
+            >
+          </li>
+          <!-- Contact -->
+          <li>
+            <a
+              href="./contact.html"
+              class="nav-link block hover:text-gray-800 transition-colors"
+              >Contact</a
+            >
+          </li>
+          <!-- Dashboard -->
+          <li>
+            <a
+              href="./dashboard.html"
+              class="nav-link block hover:text-gray-800 transition-colors"
+              >Dashboard</a
+            >
+          </li>
+          <!-- login -->
+          <li>
+            <a
+              href="./signin.html"
+              class="flex items-center gap-2 nav-link hover:text-gray-800 transition-colors"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                />
+              </svg>
+              Login</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Dropdown script  -->
+      <script>
+        const homeToggle = document.getElementById("homeToggle");
+        const homeMenu = document.getElementById("homeMenu");
+
+        homeToggle.addEventListener("click", () => {
+          homeMenu.classList.toggle("hidden");
+        });
+
+        const mobileToggle = document.getElementById("mobileToggle");
+        const mobileLink = document.getElementById("mobileLink");
+
+        // Home dropdown toggle (mobile only)
+        mobileToggle.addEventListener("click", () => {
+          mobileLink.classList.toggle("hidden");
+        });
+
+        // Optional: close menu if clicked outside
+        window.addEventListener("click", (e) => {
+          if (!homeToggle.contains(e.target) && !homeMenu.contains(e.target)) {
+            homeMenu.classList.add("hidden");
+          }
+        });
+      </script>
+    </header>
+
+    <!-- Home -->
+    <main
+      class="bg-linear-to-br from-primary/30 to-white px-4 py-8 md:py-16 xl:py-32 overflow-hidden relative"
+    >
+      <!-- back img -->
+      <div class="absolute inset-0 w-full h-full">
+        <img
+          src="./assets/contact.webp"
+          alt="contact-bg"
+          class="w-full h-full object-cover object-center opacity-50"
+        />
+      </div>
+      <div class="flex flex-col justify-center items-center text-center gap-3">
+        <h1
+          data-aos="zoom-in-up"
+          data-aos-delay="50"
+          class="text-2xl md:text-3xl xl:text-5xl font-semibold uppercase font-primary"
+        >
+          Contact Us
+        </h1>
+
+        <!-- breadcrumbs -->
+        <div
+          data-aos="zoom-in-up"
+          data-aos-delay="75"
+          class="flex flex-wrap items-center justify-center space-x-2 text-lg md:text-xl text-gray-500 font-medium py-2 px-4 w-fit mx-auto rounded-lg mb-4"
+        >
+          <a href="./index.html" type="button" aria-label="Home"> Home </a>
+          <svg
+            width="10"
+            height="10"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m14.413 10.663-6.25 6.25a.939.939 0 1 1-1.328-1.328L12.42 10 6.836 4.413a.939.939 0 1 1 1.328-1.328l6.25 6.25a.94.94 0 0 1-.001 1.328"
+              fill="#000"
+            />
+          </svg>
+          <a href="./contact.html" class="text-indigo-500">Contact</a>
+        </div>
+
+        <p
+          data-aos="zoom-in-up"
+          data-aos-delay="100"
+          class="text-lg md:text-xl"
+        >
+          We're here to support you. Whether you have questions, need help, or
+          want to collaborate — reach out anytime.
+        </p>
+      </div>
+    </main>
+
+    <!-- Contact Cards -->
+    <section class="px-4 mx-auto py-16 gap-8 overflow-hidden">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between items-start md:items-center gap-6 bg-white py-4 rounded-2xl w-full overflow-hidden"
+      >
+        <div
+          data-aos="zoom-in"
+          data-aos-delay="50"
+          class="flex flex-col items-start md:items-center bg-white shadow-lg p-4 w-full rounded-xl"
+        >
+          <svg
+            class="bg-primary/10 p-2.5 aspect-square rounded-full size-10"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 4.125H3A1.125 1.125 0 0 0 1.875 5.25V18a1.875 1.875 0 0 0 1.875 1.875h16.5A1.875 1.875 0 0 0 22.125 18V5.25A1.125 1.125 0 0 0 21 4.125m-2.892 2.25L12 11.974 5.892 6.375zM4.125 17.625V7.808l7.115 6.522a1.125 1.125 0 0 0 1.52 0l7.115-6.522v9.817z"
+              fill="currentColor"
+            />
+          </svg>
+          <p class="text-lg font-bold mt-2 text-primary uppercase">
+            Email Support
+          </p>
+          <p class="text-gray-400 mt-1 mb-4">
+            Our team can respond in real time.
+          </p>
+          <a href="../404.html" class="text-gray-500 font-semibold">
+            contact@eventiz.com
+          </a>
+        </div>
+        <div
+          data-aos="zoom-in"
+          data-aos-delay="150"
+          class="flex flex-col items-start md:items-center bg-white shadow-lg p-4 w-full rounded-xl"
+        >
+          <svg
+            class="bg-primary/10 p-2.5 aspect-square rounded-full size-10"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M22.875 19.125H21.75V9.309a1.125 1.125 0 0 0-.375-2.184h-3.75V4.809a1.125 1.125 0 0 0-.375-2.184H3.75a1.125 1.125 0 0 0-.375 2.184v14.316H2.25a1.125 1.125 0 1 0 0 2.25h20.625a1.125 1.125 0 1 0 0-2.25M19.5 9.375v9.75h-1.875v-9.75zm-13.875-4.5h9.75v14.25h-1.5V15a1.125 1.125 0 0 0-1.125-1.125h-4.5A1.125 1.125 0 0 0 7.125 15v4.125h-1.5zm6 14.25h-2.25v-3h2.25zM6.75 7.5a1.125 1.125 0 0 1 1.125-1.125h.75a1.125 1.125 0 0 1 0 2.25h-.75A1.125 1.125 0 0 1 6.75 7.5m4.5 0a1.125 1.125 0 0 1 1.125-1.125h.75a1.125 1.125 0 0 1 0 2.25h-.75A1.125 1.125 0 0 1 11.25 7.5m-4.5 3.75a1.125 1.125 0 0 1 1.125-1.125h.75a1.125 1.125 0 1 1 0 2.25h-.75A1.125 1.125 0 0 1 6.75 11.25m4.5 0a1.125 1.125 0 0 1 1.125-1.125h.75a1.125 1.125 0 1 1 0 2.25h-.75a1.125 1.125 0 0 1-1.125-1.125"
+              fill="currentColor"
+            />
+          </svg>
+          <p class="text-lg font-bold mt-2 text-primary uppercase">
+            Visit Our Office
+          </p>
+          <p class="text-gray-400 mt-1 mb-4">
+            Visit our location in real life.
+          </p>
+          <span class="text-gray-500 font-semibold"> 221b Elementary, NY </span>
+        </div>
+        <div
+          data-aos="zoom-in"
+          data-aos-delay="250"
+          class="flex flex-col items-start md:items-center bg-white shadow-lg p-4 w-full rounded-xl"
+        >
+          <svg
+            class="bg-primary/10 p-2.5 aspect-square rounded-full size-10"
+            width="21"
+            height="21"
+            viewBox="0 0 21 21"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m19 13.513-4.415-1.98-.017-.007a1.87 1.87 0 0 0-1.886.243l-2.091 1.781c-1.22-.66-2.478-1.91-3.14-3.113l1.787-2.125q.043-.051.08-.108a1.88 1.88 0 0 0 .148-1.782L7.488 2A1.88 1.88 0 0 0 5.539.89 5.65 5.65 0 0 0 .625 6.5c0 7.651 6.224 13.875 13.875 13.875a5.65 5.65 0 0 0 5.61-4.914A1.88 1.88 0 0 0 19 13.513m-4.5 4.612A11.64 11.64 0 0 1 2.875 6.5a3.4 3.4 0 0 1 2.67-3.332l1.764 3.938-1.796 2.14q-.044.051-.08.108a1.88 1.88 0 0 0-.12 1.841c.883 1.808 2.702 3.615 4.529 4.5a1.88 1.88 0 0 0 1.845-.136q.055-.036.105-.08l2.102-1.787 3.938 1.763a3.4 3.4 0 0 1-3.332 2.67"
+              fill="currentColor"
+            />
+          </svg>
+          <p class="text-lg font-bold mt-2 text-primary uppercase">
+            Call Us Directly
+          </p>
+          <p class="text-gray-400 mt-1 mb-4">Available during working hours.</p>
+          <a href="../404.html" class="text-gray-500 font-semibold">
+            (+1) 234 - 4567 - 789
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form + Map -->
+    <section
+      class="mx-auto grid lg:grid-cols-2 gap-12 px-4 pb-20 overflow-hidden"
+    >
+      <!-- Form -->
+      <div
+        data-aos="zoom-in-right"
+        data-aos-delay="50"
+        class="bg-white p-4 md:p-10 rounded-2xl shadow-lg border border-primary/20"
+      >
+        <h2 class="text-3xl font-bold text-primary mb-6">Send Us a Message</h2>
+        <form
+          class="space-y-6 scroll-mt-28"
+          method="get"
+          action="./404.html"
+          id="contactForm"
+        >
+          <div>
+            <label class="font-semibold">Full Name</label>
+            <input
+              type="text"
+              required
+              class="w-full p-3 mt-1 rounded-xl border border-gray-300 focus:border-primary outline-none"
+            />
+          </div>
+          <div>
+            <label class="font-semibold">Email Address</label>
+            <input
+              type="email"
+              required
+              pattern=".+@gmail\.com$"
+              title="Email must end with @gmail.com"
+              class="w-full p-3 mt-1 rounded-xl border border-gray-300 focus:border-primary outline-none"
+            />
+          </div>
+          <div>
+            <label class="font-semibold">Subject</label>
+            <input
+              type="text"
+              required
+              class="w-full p-3 mt-1 rounded-xl border border-gray-300 focus:border-primary outline-none"
+            />
+          </div>
+          <div>
+            <label class="font-semibold">Message</label>
+            <textarea
+              rows="5"
+              class="w-full p-3 mt-1 rounded-xl border border-gray-300 focus:border-primary outline-none"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full py-3 bg-primary text-white font-semibold rounded-xl shadow hover:bg-[#0f4eb8] transition"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+
+      <!-- Right side image -->
+      <div
+        data-aos="zoom-in-left"
+        data-aos-delay="50"
+        class="rounded-2xl overflow-hidden shadow-lg h-full"
+      >
+        <img
+          class="w-full h-full object-cover object-center"
+          src="./assets/Customer-Support.webp"
+          alt="customer"
+        />
+      </div>
+    </section>
+
+    <!-- Faq -->
+    <section class="px-4 py-8 md:py-16 overflow-hidden bg-white">
+      <div class="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <!-- LEFT -->
+        <div
+          data-aos="zoom-in-right"
+          data-aos-delay="50"
+          class="flex flex-col gap-4 justify-start"
+        >
+          <span
+            class="px-4 py-1 bg-primary/10 text-primary rounded-md font-semibold text-sm tracking-wide w-fit"
+          >
+            FREQUENTLY ASKED QUESTIONS
+          </span>
+
+          <h2 class="text-4xl font-extrabold text-gray-900 leading-tight">
+            General Questions
+          </h2>
+
+          <p class="text-gray-500 text-lg">
+            Find quick answers to the most common questions. Can't find your
+            question? Contact our support anytime.
+          </p>
+
+          <a
+            href="./contact.html#contactForm"
+            class="bg-primary hover:bg-primary transition text-white px-7 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl duration-300 w-fit"
+          >
+            Contact Support
+          </a>
+        </div>
+
+        <!-- RIGHT / FAQ -->
+        <div data-aos="zoom-in-left" data-aos-delay="50" class="space-y-4">
+          <!-- FAQ ITEM -->
+          <div
+            class="faq-card bg-white border border-gray-200 rounded-2xl shadow-sm transition-all duration-300"
+          >
+            <button
+              class="faq-toggle w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer outline-none"
+            >
+              <span class="text-lg font-semibold text-gray-900"
+                >How do I enroll in a course?</span
+              >
+              <svg
+                class="faq-arrow w-6 h-6 text-gray-600 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            <div
+              class="faq-content overflow-hidden max-h-0 opacity-0 transform -translate-y-2 transition-all duration-500 ease-out px-6 pb-5"
+            >
+              <p class="text-gray-600 leading-relaxed">
+                Enrolling is simple — choose your course, click "Enroll", make
+                payment, and you'll immediately receive access to all lessons
+                and downloadable files.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ ITEM -->
+          <div
+            class="faq-card bg-white border border-gray-200 rounded-2xl shadow-sm transition-all duration-300"
+          >
+            <button
+              class="faq-toggle w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer outline-none"
+            >
+              <span class="text-lg font-semibold text-gray-900"
+                >Are the courses mobile friendly?</span
+              >
+              <svg
+                class="faq-arrow w-6 h-6 text-gray-600 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            <div
+              class="faq-content overflow-hidden max-h-0 opacity-0 transform -translate-y-2 transition-all duration-500 ease-out px-6 pb-5"
+            >
+              <p class="text-gray-600 leading-relaxed">
+                Yes! All courses work on phones, tablets, laptops, and desktops.
+                Video players and UI elements are fully responsive.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ ITEM -->
+          <div
+            class="faq-card bg-white border border-gray-200 rounded-2xl shadow-sm transition-all duration-300"
+          >
+            <button
+              class="faq-toggle w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer outline-none"
+            >
+              <span class="text-lg font-semibold text-gray-900"
+                >Do I get a certificate after completion?</span
+              >
+              <svg
+                class="faq-arrow w-6 h-6 text-gray-600 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            <div
+              class="faq-content overflow-hidden max-h-0 opacity-0 transform -translate-y-2 transition-all duration-500 ease-out px-6 pb-5"
+            >
+              <p class="text-gray-600 leading-relaxed">
+                Absolutely! You will receive a verified certificate after
+                successfully completing the course and passing required
+                assessments.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faq script -->
+    <script>
+      document.querySelectorAll(".faq-toggle").forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+          const card = toggle.parentElement;
+          const content = card.querySelector(".faq-content");
+          const arrow = toggle.querySelector(".faq-arrow");
+
+          const isOpen =
+            content.style.maxHeight && content.style.maxHeight !== "0px";
+
+          // Smooth collapse all other FAQ
+          document.querySelectorAll(".faq-content").forEach((el) => {
+            el.style.maxHeight = "0px";
+            el.style.opacity = "0";
+            el.style.transform = "translateY(-6px)";
+          });
+          document.querySelectorAll(".faq-arrow").forEach((icon) => {
+            icon.classList.remove("rotate-180");
+          });
+
+          // If clicked one was closed → open it
+          if (!isOpen) {
+            content.style.maxHeight = content.scrollHeight + "px";
+            content.style.opacity = "1";
+            content.style.transform = "translateY(0)";
+            arrow.classList.add("rotate-180");
+          }
+        });
+      });
+    </script>
+
+    <!-- footer -->
+    <footer class="px-4 mt-10 overflow-hidden">
+      <div
+        class="flex justify-between flex-wrap w-full md:gap-20 gap-8 pb-6"
+        data-aos="fade-up"
+        data-aos-delay="150"
+      >
+        <div class="md:max-w-96 flex flex-col items-start space-y-2">
+          <img class="h-8" src="./assets/logo.webp" alt="logo" />
+          <p class="mt-2 text-lg">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s.
+          </p>
+        </div>
+
+        <div class="flex flex-col lg:items-center lg:justify-center">
+          <div class="flex flex-col text-lg space-y-2.5 md:px-8">
+            <h2 class="font-semibold mb-5 text-primary uppercase">
+              Easier Acces
+            </h2>
+            <a class="hover:text-slate-600 transition" href="./index.html"
+              >Home</a
+            >
+            <a class="hover:text-slate-600 transition" href="./about.html"
+              >About us</a
+            >
+            <a class="hover:text-slate-600 transition" href="./service.html"
+              >Services<span
+                class="text-xs text-white bg-gray-600 rounded-bl-xl rounded-tr-xl ml-2 px-2 py-1"
+                >New</span
+              ></a
+            >
+            <a class="hover:text-slate-600 transition" href="./courses.html"
+              >Courses</a
+            >
+            <a class="hover:text-slate-600 transition" href="./contact.html"
+              >Contact us</a
+            >
+          </div>
+        </div>
+
+        <div>
+          <h2 class="font-semibold mb-5 text-lg text-primary uppercase">
+            Subscribe to our newsletter
+          </h2>
+          <div class="text-lg space-y-6 max-w-sm">
+            <p>
+              The latest news, articles, and resources, sent to your inbox
+              weekly.
+            </p>
+            <form
+              id="sub-form"
+              method="get"
+              action="./404.html"
+              class="flex items-center justify-center gap-2 p-2 rounded-full bg-primary/10"
+            >
+              <input
+                required
+                pattern=".+@gmail\.com$"
+                title="Only Gmail addresses are allowed"
+                class="focus:ring-0 outline-none w-full max-w-64 py-2 rounded px-2"
+                type="email"
+                placeholder="Enter your email"
+              />
+              <button
+                type="submit"
+                class="bg-primary px-4 py-2 rounded-full cursor-pointer transform hover:scale-95 transition duration-500 ease-out text-white"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="flex items-start">
+          <div class="">
+            <h2 class="font-semibold mb-5 text-lg text-primary uppercase">
+              Get in touch
+            </h2>
+            <div class="text-lg space-y-2 flex flex-col items-start">
+              <a href="./404.html">+1-212-456-7890</a>
+              <a href="./404.html">contact@example.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="overflow-hidden">
+        <!-- Google Map -->
+        <div
+          data-aos="fade-up"
+          data-aos-delay="200"
+          class="rounded-2xl w-full overflow-hidden shadow-lg mb-3"
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.1616097152896!2d78.1739798!3d11.682956599999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babefef7fd970bb%3A0xe11aef1a71994f9!2sStackly!5e0!3m2!1sen!2sin!4v1755667813665!5m2!1sen!2sin"
+            width="100%"
+            height="250"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+
+      <div
+        class="flex items-center justify-center text-center border-t border-gray-500/30"
+      >
+        <div>
+          <p class="pt-4 text-lg pb-4">
+            Copyright 2025 © <a href="./404.html">Stackly</a>. All Right
+            Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Aos Animation  -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+      integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- contact form  -->
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Clear all fields
+          this.reset();
+
+          window.location.href = "./404.html";
+        });
+    </script>
+
+    <!--  script -->
+    <script>
+      AOS.init({
+        duration: 800,
+        delay: 200, // default delay for all elements
+        once: false,
+        mirror: true,
+      });
+
+      // sub-form reset
+      const form = document.querySelector("#sub-form");
+      form.addEventListener("submit", () => {
+        form.reset();
+      });
+
+      // mobile script
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const links = mobileMenu.querySelectorAll(".nav-link");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        mobileMenu.classList.toggle("open");
+      });
+
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          mobileMenu.classList.remove("open");
+        });
+      });
+    </script>
+  </body>
+</html>
