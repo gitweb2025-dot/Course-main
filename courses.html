@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Course</title>
 
+    <meta
+      name="description"
+      content="Access high-quality online courses designed to upgrade your skills. Learn at your own pace with expert instructors and interactive lessons."
+    />
+    <meta
+      name="keywords"
+      content="online courses, e-learning, skills training, professional development, online learning, classes, tutorials"
+    />
+
+    <meta
+      property="og:title"
+      content="Learn Online – High-Quality Courses for Skills That Matter"
+    />
+    <meta
+      property="og:description"
+      content="Join thousands of learners and explore online courses built for real-world skills. Study anytime, anywhere."
+    />
+    <meta property="og:type" content="website" />
+
     <!-- Font Awesome Cdn Link -->
     <link
       rel="stylesheet"
@@ -665,11 +684,11 @@
           pageItems.forEach((item) => {
             const card = document.createElement("div");
             card.className =
-              "bg-white rounded-2xl shadow hover:shadow-lg hover:scale-95 transition duration-500 ease-in-out overflow-hidden";
+              "bg-white rounded-2xl shadow hover:shadow-lg transition duration-500 ease-in-out overflow-hidden";
             card.innerHTML = `
-          <img src='${item.image}' class='w-full h-72 object-cover object-left' alt='${
-              item.title
-            }' />
+          <img src='${
+            item.image
+          }' class='w-full h-72 object-cover object-left' alt='${item.title}' />
           <div class='p-5'>
             <h3 class='text-lg md:text-xl font-semibold mb-1'>${item.title}</h3>
             <p class='text-sm md:text-lg text-gray-500 capitalize mb-2'>${
