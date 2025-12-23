@@ -5,5 +5,7 @@
   --font-secondary: "Montserrat", sans-serif;
   --breakpoint-xsm: 380px;
   --breakpoint-xsmd: 440px;
+  --breakpoint-mdx: 540px;
+  --breakpoint-xlmd: 840px;
   --color-primary: #1363df;
 }
