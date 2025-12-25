@@ -40,6 +40,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollSmoother.min.js"></script>
+
     <!-- Google fonts Link -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -193,6 +195,32 @@
         }
       }
     </style>
+
+    <style>
+      /* Firefox */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #2563eb #f1f5f9;
+      }
+      /* ===== Chrome, Edge, Safari ===== */
+      ::-webkit-scrollbar {
+        width: 10px; /* scrollbar width */
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9; /* light slate */
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: #2563eb; /* blue-600 */
+        border-radius: 999px; /* pill shape */
+        border: 2px solid #f1f5f9; /* spacing gap */
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: #1d4ed8; /* blue-700 on hover */
+      }
+    </style>
   </head>
 
   <body class="antialiased text-black">
@@ -215,7 +243,8 @@
         <div id="smooth-content">
           <!--- ALL YOUR CONTENT HERE --->
 
-          <section
+          <!-- top bar -->
+          <header
             class="sticky top-0 w-full bg-linear-to-r from-neutral-900 to-neutral-800 text-gray-200 text-sm z-50"
           >
             <div
@@ -261,12 +290,12 @@
                 </a>
               </div>
             </div>
-          </section>
+          </header>
 
           <!-- Navbar  -->
           <header class="sticky top-14 z-50 backdrop-blur w-full mx-auto">
             <div
-              class="flex items-center justify-between px-4 h-16 bg-white border border-black/10"
+              class="flex items-center justify-between px-4 md:px-6 lg:px-8 h-16 bg-white border border-black/10"
             >
               <!-- Logo -->
               <a class="" href="./index.html">
@@ -484,286 +513,365 @@
           </header>
 
           <!-- Home -->
-          <main
-            class="bg-linear-to-br from-black/20 to-primary/10 overflow-hidden relative text-white"
-          >
-            <div class="absolute inset-0 h-[450px] z-[-1]">
+          <main class="hero-section relative overflow-hidden">
+            <div class="hero-bg absolute inset-0 z-[-1]">
               <img
-                class="h-[500px] w-full object-cover"
-                src="../assets/home-bg.webp"
+                class="h-screen w-full object-cover object-top brightness-50"
+                src="./assets/home-bg.webp"
                 alt="home-bg"
               />
             </div>
-
             <div
-              class="h-[450px] w-full flex flex-col justify-center px-4 space-y-3"
+              class="hero-content relative mx-auto px-4 md:px-6 lg:px-8 py-14 md:py-28"
             >
+              <!-- Badge -->
+              <div
+                class="hero-badge inline-flex items-center gap-2 bg-white shadow-sm px-4 py-2 rounded-full mb-6"
+              >
+                <span
+                  class="w-7 h-7 flex items-center justify-center rounded-full bg-teal-100 text-teal-600"
+                >
+                  <i class="fa-solid fa-bolt"></i>
+                </span>
+                <span class="text-sm font-medium text-gray-800">
+                  Welcome to Online Education
+                </span>
+              </div>
+
+              <!-- Heading -->
               <h1
-                data-aos="zoom-in"
-                data-aos-delay="50"
-                class="text-2xl md:text-3xl xl:text-5xl font-semibold font-primary uppercase max-w-2xl"
+                class="hero-title text-4xl md:text-6xl font-extrabold uppercase text-gray-200 font-primary leading-tight max-w-3xl"
               >
-                The Best Place to Invest in your Knowledge
+                Start learning from the world’s best sites
               </h1>
-              <p
-                data-aos="zoom-in"
-                data-aos-delay="75"
-                class="text-lg md:text-xl"
-              >
-                Our platform provides world‑class services, smart learning
-                tools, AI‑powered recommendations, and seamless course
-                experience.
+
+              <!-- Description -->
+              <p class="hero-desc mt-6 max-w-xl text-lg text-gray-200">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+                tellus, luctus nec ullamcorper mattis
               </p>
 
+              <!-- Stats -->
               <div
-                data-aos="zoom-in"
-                data-aos-delay="100"
-                class="flex flex-wrap items-center gap-3"
+                class="hero-stats mt-16 flex flex-col sm:flex-row gap-12 text-white"
               >
-                <a
-                  href="./courses.html#courses-redirect"
-                  class="border-2 border-primary bg-primary px-6 py-3 text-white rounded-full w-fit transform hover:scale-90 transition duration-500 ease-out"
-                  >Explore Courses</a
-                >
+                <!-- Stat 1 -->
+                <div class="flex items-center gap-4 hero-stat">
+                  <div
+                    class="w-14 h-14 rounded-full border border-gray-200 flex items-center justify-center"
+                  >
+                    <i class="fa-solid fa-book"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-3xl font-bold">9.5K+</h3>
+                    <p class="text-sm">
+                      Total active students taking gifted courses
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="flex items-center gap-4 hero-stat">
+                  <div
+                    class="w-14 h-14 rounded-full border border-gray-200 flex items-center justify-center"
+                  >
+                    <i class="fa-solid fa-user-graduate"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-3xl font-bold">15.5K+</h3>
+                    <p class="text-sm">
+                      Total active students taking gifted courses
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </main>
 
-          <section class="py-20 px-4 max-w-7xl mx-auto category-section">
-            <!-- Heading -->
-            <div class="text-center mb-14">
-              <div
-                class="inline-flex items-center gap-2 text-indigo-600 font-semibold text-sm mb-3"
-              >
-                <span
-                  class="w-8 h-8 rounded-full border border-indigo-300 flex items-center justify-center"
+          <script>
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Create paused timeline
+            const heroTL = gsap.timeline({
+              defaults: { ease: "power3.out" },
+              paused: true, // important
+            });
+
+            // ------------------- Animations ------------------- //
+            heroTL.from(".hero-bg img", {
+              scale: 1.15,
+              opacity: 0,
+              duration: 1.8,
+            });
+            heroTL.from(
+              ".hero-badge",
+              { y: 40, opacity: 0, duration: 0.8 },
+              "-=1.2"
+            );
+            heroTL.from(
+              ".hero-title",
+              { y: 60, opacity: 0, duration: 1 },
+              "-=0.6"
+            );
+            heroTL.from(
+              ".hero-desc",
+              { y: 40, opacity: 0, duration: 0.8 },
+              "-=0.6"
+            );
+            heroTL.from(
+              ".hero-stat",
+              { y: 50, opacity: 0, stagger: 0.4, duration: 3 },
+              "-=0.4"
+            );
+
+            // ------------------- ScrollTrigger ------------------- //
+            // ScrollTrigger will watch for the section but we control when it actually plays
+            ScrollTrigger.create({
+              trigger: ".hero-section",
+              start: "top 70%",
+              onEnter: () => {
+                // Delay the animation by 7 seconds
+                setTimeout(() => {
+                  heroTL.play();
+                }, 7000);
+              },
+            });
+          </script>
+
+          <!-- About Company -->
+          <section
+            class="education-section relative px-4 md:px-6 lg:px-8 py-8 overflow-hidden"
+          >
+            <div
+              class="container mx-auto grid lg:grid-cols-2 gap-10 items-center"
+            >
+              <!-- Left Image Column -->
+              <div class="edu-images relative">
+                <div class="edu-main-img overflow-hidden rounded-xl">
+                  <img
+                    src="./assets/about.webp"
+                    alt="Student"
+                    class="w-full h-[500px] object-cover"
+                  />
+                </div>
+                <div
+                  class="edu-sub-img absolute bottom-0 right-0 transform translate-x-3 md:translate-x-6 translate-y-6 overflow-hidden rounded-tl-[100px] border-4 border-white"
                 >
-                  🎓
-                </span>
-                TOP CATEGORY
+                  <img
+                    src="./assets/home2-2.webp"
+                    alt="Learning"
+                    class="w-40 md:w-56"
+                  />
+                </div>
+                <div
+                  class="edu-stats absolute top-0 left-0 bg-white rounded-tl-xl rounded-br-xl p-4"
+                >
+                  <div class="text-2xl font-bold">6,570+</div>
+                  <div class="text-sm">Active Students</div>
+                </div>
               </div>
 
-              <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
-                Browse Our Top Categories
-              </h2>
-
-              <div
-                class="w-24 h-1 bg-indigo-500 rounded-full mx-auto mt-4"
-              ></div>
-            </div>
-
-            <!-- Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <!-- Card -->
-              <div
-                class="category-card group flex items-center gap-5 p-6 rounded-xl border border-dashed border-indigo-200 bg-white cursor-pointer"
-              >
+              <!-- Right Text Column -->
+              <div class="edu-content space-y-8">
                 <div
-                  class="w-14 h-14 flex items-center justify-center rounded-full bg-indigo-50 text-indigo-600 text-xl"
+                  class="edu-label flex items-center justify-center px-6 py-3 text-sm text-primary font-semibold border border-blue-600 w-fit"
                 >
-                  🎥
+                  <p>About Company</p>
                 </div>
 
-                <div>
-                  <h3 class="font-semibold text-lg text-gray-900">
-                    3D Animation
-                  </h3>
-                  <span
-                    class="inline-block mt-1 text-sm text-indigo-600 bg-indigo-50 px-3 py-1 rounded-md"
-                  >
-                    1 Courses
+                <h2
+                  class="edu-heading text-3xl md:text-5xl font-extrabold leading-tight font-primary"
+                >
+                  Education Instructors Play Crucial Role in
+                  <span class="text-primary underline">
+                    <span class="char">S</span><span class="char">h</span
+                    ><span class="char">a</span><span class="char">p</span
+                    ><span class="char">i</span><span class="char">n</span
+                    ><span class="char">g</span>
                   </span>
+                </h2>
+
+                <p class="edu-desc text-black">
+                  There are many variations of passages of lorem ipsum available
+                  but majority have suffered alteration in some form by injected
+                  humour passages of lorem ipsum many.
+                </p>
+
+                <div class="edu-features grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="edu-feature flex items-center space-x-2">
+                    <div class="text-3xl">
+                      <i class="fa-solid fa-book"></i>
+                    </div>
+                    <div>
+                      <p class="font-semibold">Flexible Course Plan</p>
+                      <p class="text-sm text-black">
+                        Elit aenean scelerisque vitae consequat the.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="edu-feature flex flex-col items-start space-x-2">
+                    <div class="edu-feature flex items-start space-x-2">
+                      <i class="fa-solid fa-check"></i>
+                      <p class="font-semibold">24/7 Online Support</p>
+                    </div>
+                    <div class="edu-feature flex items-start space-x-2">
+                      <i class="fa-solid fa-check"></i>
+                      <p class="font-semibold">Expert Mentors</p>
+                    </div>
+                  </div>
                 </div>
 
-                <div
-                  class="ml-auto text-xl text-gray-400 group-hover:text-indigo-600 transition"
-                >
-                  →
-                </div>
-              </div>
-
-              <div
-                class="category-card group flex items-center gap-5 p-6 rounded-xl border border-dashed border-indigo-200 bg-white cursor-pointer"
-              >
-                <div
-                  class="w-14 h-14 flex items-center justify-center rounded-full bg-indigo-50 text-indigo-600 text-xl"
-                >
-                  🎨
-                </div>
-                <div>
-                  <h3 class="font-semibold text-lg">Art & Design</h3>
-                  <span
-                    class="inline-block mt-1 text-sm text-indigo-600 bg-indigo-50 px-3 py-1 rounded-md"
+                <div class="edu-cta flex flex-wrap-reverse items-center gap-8">
+                  <div class="edu-ceo flex items-center space-x-3">
+                    <img
+                      src="./assets/men3.webp"
+                      class="w-12 h-12 rounded-full object-cover object-top"
+                      alt="Cameron"
+                    />
+                    <div>
+                      <p class="font-semibold">Cameron Williamson</p>
+                      <p class="text-sm text-black">CEO, Codemy Online</p>
+                    </div>
+                  </div>
+                  <button
+                    class="edu-btn bg-primary text-black px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition"
                   >
-                    1 Courses
-                  </span>
-                </div>
-                <div
-                  class="ml-auto text-xl text-gray-400 group-hover:text-indigo-600 transition"
-                >
-                  →
+                    Find Our Course →
+                  </button>
                 </div>
               </div>
-
-              <div
-                class="category-card group flex items-center gap-5 p-6 rounded-xl border border-dashed border-indigo-200 bg-white cursor-pointer"
-              >
-                <div
-                  class="w-14 h-14 flex items-center justify-center rounded-full bg-indigo-50 text-indigo-600 text-xl"
-                >
-                  📊
-                </div>
-                <div>
-                  <h3 class="font-semibold text-lg">Data Science</h3>
-                  <span
-                    class="inline-block mt-1 text-sm text-indigo-600 bg-indigo-50 px-3 py-1 rounded-md"
-                  >
-                    4 Courses
-                  </span>
-                </div>
-                <div
-                  class="ml-auto text-xl text-gray-400 group-hover:text-indigo-600 transition"
-                >
-                  →
-                </div>
-              </div>
-
-              <div
-                class="category-card group flex items-center gap-5 p-6 rounded-xl border border-dashed border-indigo-200 bg-white cursor-pointer"
-              >
-                <div
-                  class="w-14 h-14 flex items-center justify-center rounded-full bg-indigo-50 text-indigo-600 text-xl"
-                >
-                  💰
-                </div>
-                <div>
-                  <h3 class="font-semibold text-lg">Finance Account</h3>
-                  <span
-                    class="inline-block mt-1 text-sm text-indigo-600 bg-indigo-50 px-3 py-1 rounded-md"
-                  >
-                    4 Courses
-                  </span>
-                </div>
-                <div
-                  class="ml-auto text-xl text-gray-400 group-hover:text-indigo-600 transition"
-                >
-                  →
-                </div>
-              </div>
-
-              <div
-                class="category-card group flex items-center gap-5 p-6 rounded-xl border border-dashed border-indigo-200 bg-white cursor-pointer"
-              >
-                <div
-                  class="w-14 h-14 flex items-center justify-center rounded-full bg-indigo-50 text-indigo-600 text-xl"
-                >
-                  ❤️
-                </div>
-                <div>
-                  <h3 class="font-semibold text-lg">Health & Fitness</h3>
-                  <span
-                    class="inline-block mt-1 text-sm text-indigo-600 bg-indigo-50 px-3 py-1 rounded-md"
-                  >
-                    2 Courses
-                  </span>
-                </div>
-                <div
-                  class="ml-auto text-xl text-gray-400 group-hover:text-indigo-600 transition"
-                >
-                  →
-                </div>
-              </div>
-
-              <div
-                class="category-card group flex items-center gap-5 p-6 rounded-xl border border-dashed border-indigo-200 bg-white cursor-pointer"
-              >
-                <div
-                  class="w-14 h-14 flex items-center justify-center rounded-full bg-indigo-50 text-indigo-600 text-xl"
-                >
-                  📣
-                </div>
-                <div>
-                  <h3 class="font-semibold text-lg">Marketing</h3>
-                  <span
-                    class="inline-block mt-1 text-sm text-indigo-600 bg-indigo-50 px-3 py-1 rounded-md"
-                  >
-                    3 Courses
-                  </span>
-                </div>
-                <div
-                  class="ml-auto text-xl text-gray-400 group-hover:text-indigo-600 transition"
-                >
-                  →
-                </div>
-              </div>
-            </div>
-
-            <!-- Button -->
-            <div class="text-center mt-14">
-              <button
-                class="bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-indigo-700 transition"
-              >
-                View All Categories →
-              </button>
             </div>
           </section>
-
-          <style>
-            .category-card {
-              transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-
-            .category-card:hover {
-              transform: translateY(-6px);
-              box-shadow: 0 15px 40px rgba(79, 70, 229, 0.15);
-              border-color: #6366f1;
-            }
-          </style>
 
           <script>
             gsap.registerPlugin(ScrollTrigger);
 
-            gsap.fromTo(
-              ".category-card",
-              {
-                y: 60,
-                opacity: 0,
+            // ---------- 1. Animate heading letters ----------
+            gsap.from(".edu-heading .char", {
+              scrollTrigger: {
+                trigger: ".education-section",
+                start: "top center",
               },
-              {
-                y: 0,
-                opacity: 1,
-                duration: 1,
-                ease: "power3.out",
-                stagger: 0.5, // ✅ STAGGER GOES HERE
-                scrollTrigger: {
-                  trigger: ".category-section",
-                  start: "top 80%",
-                  toggleActions: "play none none none",
-                },
-              }
-            );
+              opacity: 0,
+              y: 50,
+              stagger: 0.3,
+              duration: 0.8,
+              ease: "power4.out",
+            });
+
+            // ---------- 2. Animate description ----------
+            gsap.from(".edu-desc", {
+              scrollTrigger: {
+                trigger: ".education-section",
+                start: "top center",
+              },
+              opacity: 0,
+              y: 30,
+              duration: 1,
+              ease: "power3.out",
+            });
+
+            // ---------- 3. Animate main image ----------
+            gsap.from(".edu-main-img", {
+              scrollTrigger: {
+                trigger: ".education-section",
+                start: "top 75%",
+              },
+              scale: 1.2,
+              opacity: 0,
+              duration: 2,
+              ease: "power3.out",
+            });
+
+            // ---------- 4. Animate sub-image ----------
+            gsap.from(".edu-sub-img", {
+              scrollTrigger: {
+                trigger: ".education-section",
+                start: "top 75%",
+              },
+              x: 100,
+              opacity: 0,
+              duration: 3,
+              ease: "power3.out",
+            });
+
+            // ---------- 5. Animate stats ----------
+            gsap.from(".edu-stats", {
+              scrollTrigger: {
+                trigger: ".education-section",
+                start: "top 75%",
+              },
+              opacity: 0,
+              y: -30,
+              duration: 4,
+              ease: "power3.out",
+            });
+
+            // ---------- 6. Animate features ----------
+            gsap.from(".edu-feature", {
+              scrollTrigger: {
+                trigger: ".education-section",
+                start: "top 70%",
+              },
+              opacity: 0,
+              y: 30,
+              stagger: 0.2,
+              duration: 5,
+              ease: "power3.out",
+            });
+
+            // ---------- 7. Animate CTA button ----------
+            gsap.from(".edu-btn", {
+              scrollTrigger: {
+                trigger: ".education-section",
+                start: "top 70%",
+              },
+              opacity: 0,
+              y: 30,
+              scale: 0.9,
+              duration: 6,
+              ease: "back.out(1.7)",
+            });
+
+            // ---------- 8. Animate CEO section ----------
+            gsap.from(".edu-ceo", {
+              scrollTrigger: {
+                trigger: ".education-section",
+                start: "top 70%",
+              },
+              opacity: 0,
+              y: 30,
+              duration: 7,
+              ease: "back.out(1.7)",
+            });
           </script>
 
-          <section class="py-20 max-w-7xl mx-auto px-4">
+          <!-- Top Class Courses -->
+          <section class="py-20 px-4 md:px-6 lg:px-8 mx-auto overflow-hidden">
             <!-- Heading -->
             <div class="text-center mb-12">
               <span
                 class="inline-block bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm mb-2"
                 >Top Class Courses</span
               >
-              <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+              <h2
+                class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900"
+              >
                 Explore Featured Courses
               </h2>
             </div>
 
             <!-- Cards grid -->
-            <div class="grid gap-8 md:grid-cols-3">
+            <div
+              class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 course-grid"
+            >
               <!-- Card 1 -->
               <div
-                class="card bg-white rounded-xl shadow-md overflow-hidden border border-gray-200"
+                class="course-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-200"
               >
                 <img
-                  src="https://via.placeholder.com/400x220?text=WordPress+Course"
+                  src="./assets/course-2-1.webp"
                   alt="WordPress"
                   class="w-full h-56 object-cover"
                 />
@@ -773,20 +881,25 @@
                     >WordPress Development</span
                   >
                   <h3 class="mt-3 text-lg font-semibold text-gray-900">
-                    Complete WordPress Theme Development
+                    Complete WordPress Theme Development and Deployment
                   </h3>
                   <div class="flex items-center mt-2 text-gray-500 text-sm">
-                    <span class="mr-2">📘 Lessons 7</span>
-                    <span>👥 Students 2</span>
+                    <span class="mr-2"
+                      ><i class="fa-solid fa-book"></i> Lessons 7</span
+                    >
+                    <span
+                      ><i class="fa-solid fa-user-graduate"></i> Students
+                      27</span
+                    >
                   </div>
                   <div class="flex items-center mt-3">
                     <img
-                      src="https://via.placeholder.com/30"
+                      src="./assets/men1.webp"
                       alt="Instructor"
-                      class="w-8 h-8 rounded-full mr-2"
+                      class="w-8 h-8 rounded-full mr-2 object-cover"
                     />
                     <div class="text-sm">
-                      <p class="font-medium text-gray-900">Mohiuddin Sumon</p>
+                      <p class="font-medium text-gray-900">Deva Durai</p>
                       <p class="text-green-600 text-xs">WordPress Developer</p>
                     </div>
                     <div class="ml-auto flex items-center text-yellow-400">
@@ -808,10 +921,10 @@
 
               <!-- Card 2 -->
               <div
-                class="card bg-white rounded-xl shadow-md overflow-hidden border border-gray-200"
+                class="course-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-200"
               >
                 <img
-                  src="https://via.placeholder.com/400x220?text=Webflow+Course"
+                  src="./assets/course-2-2.webp"
                   alt="Webflow"
                   class="w-full h-56 object-cover"
                 />
@@ -824,21 +937,26 @@
                     Mastering Webflow: Build Stunning Websites Without
                   </h3>
                   <div class="flex items-center mt-2 text-gray-500 text-sm">
-                    <span class="mr-2">📘 Lessons 14</span>
-                    <span>👥 Students 5</span>
+                    <span class="mr-2"
+                      ><i class="fa-solid fa-book"></i> Lessons 14</span
+                    >
+                    <span
+                      ><i class="fa-solid fa-user-graduate"></i> Students
+                      5</span
+                    >
                   </div>
                   <div class="flex items-center mt-3">
                     <img
-                      src="https://via.placeholder.com/30"
+                      src="./assets/men2.webp"
                       alt="Instructor"
-                      class="w-8 h-8 rounded-full mr-2"
+                      class="w-8 h-8 rounded-full mr-2 object-cover"
                     />
                     <div class="text-sm">
                       <p class="font-medium text-gray-900">Mohiuddin Sumon</p>
-                      <p class="text-green-600 text-xs">WordPress Developer</p>
+                      <p class="text-green-600 text-xs">Web Design</p>
                     </div>
-                    <div class="ml-auto flex items-center text-gray-300">
-                      ☆☆☆☆☆ <span class="text-gray-400 ml-1">(0)</span>
+                    <div class="ml-auto flex items-center text-yellow-400">
+                      ★★★★☆ <span class="text-gray-400 ml-1">(4.5)</span>
                     </div>
                   </div>
                   <div class="mt-4 flex justify-between items-center">
@@ -856,10 +974,10 @@
 
               <!-- Card 3 -->
               <div
-                class="card bg-white rounded-xl shadow-md overflow-hidden border border-gray-200"
+                class="course-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-200"
               >
                 <img
-                  src="https://via.placeholder.com/400x220?text=Premiere+Pro+Course"
+                  src="./assets/course-2-3.webp"
                   alt="Premiere Pro"
                   class="w-full h-56 object-cover"
                 />
@@ -872,21 +990,26 @@
                     Adobe Premiere Pro Masterclass: Video Editing
                   </h3>
                   <div class="flex items-center mt-2 text-gray-500 text-sm">
-                    <span class="mr-2">📘 Lessons 9</span>
-                    <span>👥 Students 0</span>
+                    <span class="mr-2"
+                      ><i class="fa-solid fa-book"></i> Lessons 9</span
+                    >
+                    <span
+                      ><i class="fa-solid fa-user-graduate"></i> Students
+                      20</span
+                    >
                   </div>
                   <div class="flex items-center mt-3">
                     <img
-                      src="https://via.placeholder.com/30"
+                      src="./assets/men3.webp"
                       alt="Instructor"
-                      class="w-8 h-8 rounded-full mr-2"
+                      class="w-8 h-8 rounded-full mr-2 object-cover"
                     />
                     <div class="text-sm">
-                      <p class="font-medium text-gray-900">Mohiuddin Sumon</p>
-                      <p class="text-green-600 text-xs">WordPress Developer</p>
+                      <p class="font-medium text-gray-900">Alex Sumon</p>
+                      <p class="text-green-600 text-xs">Video Editing</p>
                     </div>
-                    <div class="ml-auto flex items-center text-gray-300">
-                      ☆☆☆☆☆ <span class="text-gray-400 ml-1">(0)</span>
+                    <div class="ml-auto flex items-center text-yellow-400">
+                      ★★★☆☆ <span class="text-gray-400 ml-1">(3.8)</span>
                     </div>
                   </div>
                   <div class="mt-4 flex justify-between items-center">
@@ -906,24 +1029,20 @@
 
           <script>
             gsap.registerPlugin(ScrollTrigger);
-            window.addEventListener("DOMContentLoaded", () => {
-              gsap.utils.toArray(".card").forEach((card) => {
-                gsap.fromTo(
-                  card,
-                  { y: 30, opacity: 0 },
-                  {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                      trigger: card,
-                      start: "top 85%",
-                      toggleActions: "play none none none",
-                    },
-                  }
-                );
-              });
+
+            gsap.from(".course-card", {
+              y: 280,
+              opacity: 0,
+              duration: 2,
+              stagger: 0.25,
+
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: ".course-grid",
+                start: "top 80%",
+                end: "bottom 0%",
+                scrub: true,
+              },
             });
           </script>
 
@@ -932,7 +1051,7 @@
             <h1
               data-aos="zoom-in"
               data-aos-delay="50"
-              class="text-2xl md:text-3xl xl:text-5xl text-center font-semibold font-primary uppercase"
+              class="text-2xl md:text-3xl xl:text-4xl text-center font-semibold font-primary uppercase"
             >
               Courses We Offer
             </h1>
@@ -944,173 +1063,15 @@
               Our platform provides world‑class services, smart learning tools,
               AI‑powered recommendations, and seamless course experience.
             </p>
-
-            <!-- profile -->
-            <section class="px-4 py-6 md:py-12 mt-6 overflow-hidden">
-              <div class="flex flex-wrap gap-4 items-center justify-center">
-                <div class="flex -space-x-3 pr-3">
-                  <img
-                    src="../assets/men1.webp"
-                    alt="profile1"
-                    class="size-12 md:size-24 rounded-full object-top object-cover border-2 border-white hover:-translate-y-1 transition z-1 duration-500 ease-out"
-                  />
-                  <img
-                    src="../assets/women1.webp"
-                    alt="profile2"
-                    class="size-12 md:size-24 rounded-full object-top object-cover border-2 border-white hover:-translate-y-1 transition z-2 duration-500 ease-out"
-                  />
-                  <img
-                    src="../assets/men2.webp"
-                    alt="profile3"
-                    class="size-12 md:size-24 rounded-full object-top object-cover border-2 border-white hover:-translate-y-1 transition z-3 duration-500 ease-out"
-                  />
-                  <img
-                    src="../assets/men3.webp"
-                    alt="profile4"
-                    class="size-12 md:size-24 rounded-full object-top object-cover border-2 border-white hover:-translate-y-1 transition z-4 duration-500 ease-out"
-                  />
-                </div>
-                <div class="">
-                  <div class="flex items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="#FACC15"
-                      stroke="#FACC15"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path
-                        d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
-                      />
-                    </svg>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="#FACC15"
-                      stroke="#FACC15"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path
-                        d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
-                      />
-                    </svg>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="#FACC15"
-                      stroke="#FACC15"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path
-                        d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
-                      />
-                    </svg>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="#FACC15"
-                      stroke="#FACC15"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path
-                        d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
-                      />
-                    </svg>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="#FACC15"
-                      stroke="#FACC15"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path
-                        d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
-                      />
-                    </svg>
-                    <p class="text-gray-600 font-medium ml-2">5.0</p>
-                  </div>
-                  <p class="text-sm md:text-lg xl:text-xl font-primary">
-                    Trusted by
-                    <span class="font-medium text-gray-800 font-secondary"
-                      >100,000+</span
-                    >
-                    users
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 py-8 gap-6">
-              <div
-                class="bg-white shadow-lg p-4 relative rounded-xl flex flex-col justify-center gap-4"
-              >
-                <h1
-                  class="text-2xl md:text-3xl xl:text-4xl font-semibold font-primary"
-                >
-                  Career Opportunities
-                </h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
-                  sunt voluptatibus, ipsum iusto quidem repellat nobis. Officiis
-                  odio harum dicta veniam, accusantium earum provident alias
-                  nostrum et aperiam atque itaque.
-                </p>
-
-                <div
-                  class="w-full h-5 bg-primary/40 absolute inset-0 z-[-1] transform rotate-3 rounded-xl"
-                ></div>
-              </div>
-              <div
-                class="bg-white shadow-lg p-4 relative rounded-xl flex flex-col justify-center gap-4"
-              >
-                <h1
-                  class="text-2xl md:text-3xl xl:text-4xl font-semibold font-primary"
-                >
-                  Become a Partner
-                </h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
-                  sunt voluptatibus, ipsum iusto quidem repellat nobis. Officiis
-                  odio harum dicta veniam, accusantium earum provident alias
-                  nostrum et aperiam atque itaque.
-                </p>
-
-                <div
-                  class="w-full h-5 bg-primary/40 absolute inset-0 z-[-1] transform rotate-3 rounded-xl"
-                ></div>
-              </div>
-            </div>
           </section>
 
           <!-- courses section -->
-          <section class="px-4 py-4 overflow-hidden">
+          <section class="gs-course-section px-4 py-4 overflow-hidden">
             <div
-              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+              class="gs-course-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8"
             >
               <div
-                data-aos="zoom-in"
-                data-aos-delay="50"
-                class="bg-white px-2 py-4 md:p-3 rounded-xl shadow"
+                class="bg-white px-2 py-4 md:p-3 rounded-xl shadow gs-course-card"
               >
                 <img
                   src="../assets/da.webp"
@@ -1139,9 +1100,7 @@
               </div>
 
               <div
-                data-aos="zoom-in"
-                data-aos-delay="75"
-                class="bg-white px-2 py-4 md:p-3 rounded-xl shadow"
+                class="bg-white px-2 py-4 md:p-3 rounded-xl shadow gs-course-card"
               >
                 <img
                   src="../assets/google.webp"
@@ -1170,9 +1129,7 @@
               </div>
 
               <div
-                data-aos="zoom-in"
-                data-aos-delay="100"
-                class="bg-white px-2 py-4 md:p-3 rounded-xl shadow"
+                class="bg-white px-2 py-4 md:p-3 rounded-xl shadow gs-course-card"
               >
                 <img
                   src="../assets/bd.webp"
@@ -1200,7 +1157,7 @@
                 </div>
               </div>
 
-              <div
+              <!-- <div
                 data-aos="zoom-in"
                 data-aos-delay="125"
                 class="bg-white px-2 py-4 md:p-3 rounded-xl shadow"
@@ -1229,28 +1186,65 @@
                     <p class="text-gray-500 text-lg">⭐ 4.8</p>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </section>
 
-          <section class="bg-[#f5f0e6] py-20">
-            <div class="max-w-7xl mx-auto px-6 lg:flex lg:gap-20">
+          <script>
+            gsap.registerPlugin(ScrollTrigger);
+
+            /* ===============================
+     PERFORMANCE OPTIMIZATION
+  ================================ */
+            gsap.set(".gs-course-card", {
+              willChange: "transform, opacity",
+              force3D: true,
+            });
+
+            /* ===============================
+     CARD ENTRANCE ANIMATION
+  ================================ */
+            gsap.from(".gs-course-card", {
+              scrollTrigger: {
+                trigger: ".gs-course-grid",
+                start: "top 85%",
+                end: "bottom 30%",
+                scrub: true,
+                // once: true,
+              },
+              autoAlpha: 0,
+              y: 50,
+              scale: 0.95,
+              duration: 0.7,
+              stagger: {
+                each: 0.18,
+                from: "start",
+              },
+              ease: "power3.out",
+            });
+          </script>
+
+          <!-- How it works? -->
+          <section
+            class="bg-[#f5f0e6] px-4 md:px-6 lg:px-8 py-20 overflow-hidden"
+          >
+            <div class="mx-auto lg:flex lg:gap-20">
               <!-- Left Content -->
-              <div class="lg:w-1/2 space-y-6">
+              <div class="lg:w-1/2 space-y-4">
                 <span
-                  class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium"
+                  class="how-badge gs-badge inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium"
                   >How it works?</span
                 >
 
                 <h2
-                  class="text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight"
+                  class="gs-heading text-2xl md:text-3xl lg:text-4xl font-primary font-extrabold text-gray-900 leading-tight"
                 >
                   Simple Steps to Success
                 </h2>
-                <p class="text-gray-600">
+                <p class="text-gray-600 gs-subtext">
                   It all starts with a single first step.
                 </p>
-                <p class="text-gray-700">
+                <p class="text-gray-700 gs-paragraph">
                   Learn about how them you went down prying the wedding ring off
                   his cold, dead finger. I don’t know what you did, Fry, but
                   once again, you screwed up! Now all the planets are gonna
@@ -1258,22 +1252,25 @@
                 </p>
 
                 <!-- CTA Box -->
-                <div class="bg-white rounded-xl p-8 shadow-lg mt-6">
+                <div
+                  class="bg-white rounded-xl p-8 shadow-lg mt-6 cta-box gs-cta"
+                >
                   <h3 class="text-3xl font-bold text-gray-900">
                     Ready to start?
                   </h3>
-                  <p class="text-gray-600 mt-2">
+                  <p class="text-gray-600 my-6">
                     The plans you refer to
                     <span class="font-semibold">will soon</span> be back in our
                     hands. Alderaan? I'm not going to Alderaan. I've got to
                     <a href="#" class="underline text-blue-600">go home</a>.
                   </p>
-                  <button
-                    class="mt-6 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+                  <a
+                    href="./404.html"
+                    class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
                   >
                     LET'S TALK
-                  </button>
-                  <p class="text-gray-400 text-xs mt-2">
+                  </a>
+                  <p class="text-gray-400 text-xs mt-8">
                     All queries are replied within
                     <span class="underline">24hrs</span>.
                   </p>
@@ -1284,12 +1281,12 @@
               <div class="lg:w-1/2 mt-12 lg:mt-0 relative">
                 <!-- Vertical line -->
                 <div
-                  class="absolute top-0 left-5 w-0.5 h-full bg-gray-300"
+                  class="absolute top-0 left-5 w-0.5 h-full bg-gray-300 timeline-line gs-line"
                 ></div>
 
                 <div class="space-y-12">
                   <!-- Step 1 -->
-                  <div class="flex items-start relative">
+                  <div class="flex items-start relative timeline-step gs-step">
                     <div class="flex flex-col items-center">
                       <div
                         class="w-10 h-10 rounded-full bg-gray-300 text-white flex items-center justify-center font-bold z-10"
@@ -1309,7 +1306,7 @@
                   </div>
 
                   <!-- Step 2 -->
-                  <div class="flex items-start relative">
+                  <div class="flex items-start relative timeline-step gs-step">
                     <div class="flex flex-col items-center">
                       <div
                         class="w-10 h-10 rounded-full bg-gray-300 text-white flex items-center justify-center font-bold z-10"
@@ -1329,7 +1326,7 @@
                   </div>
 
                   <!-- Step 3 -->
-                  <div class="flex items-start relative">
+                  <div class="flex items-start relative timeline-step gs-step">
                     <div class="flex flex-col items-center">
                       <div
                         class="w-10 h-10 rounded-full bg-gray-300 text-white flex items-center justify-center font-bold z-10"
@@ -1349,7 +1346,7 @@
                   </div>
 
                   <!-- Step 4 -->
-                  <div class="flex items-start relative">
+                  <div class="flex items-start relative timeline-step gs-step">
                     <div class="flex flex-col items-center">
                       <div
                         class="w-10 h-10 rounded-full bg-gray-300 text-white flex items-center justify-center font-bold z-10"
@@ -1375,70 +1372,363 @@
           <script>
             gsap.registerPlugin(ScrollTrigger);
 
-            gsap.from(".testimonial-section h2", {
-              scrollTrigger: ".testimonial-section",
-              y: 50,
-              opacity: 0,
-              duration: 1,
-              ease: "power3.out",
-            });
-
-            gsap.from(".testimonial-section .badge", {
-              scrollTrigger: ".testimonial-section",
-              y: -20,
-              opacity: 0,
-              duration: 0.8,
-              ease: "power3.out",
-            });
-
-            gsap.from(
-              ".testimonial-section p, .testimonial-section .bg-white",
+            /* ===============================
+     GLOBAL PERFORMANCE OPTIMIZATION
+  ================================ */
+            gsap.set(
+              [
+                ".gs-badge",
+                ".gs-heading",
+                ".gs-subtext",
+                ".gs-paragraph",
+                ".gs-cta",
+                ".gs-step",
+              ],
               {
-                scrollTrigger: ".testimonial-section",
-                y: 30,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.8,
-                ease: "power3.out",
+                willChange: "transform, opacity",
+                force3D: true,
               }
             );
 
-            // Timeline steps animation
-            gsap.from(".lg\\:w-1\\/2 .flex.items-start", {
-              scrollTrigger: ".lg\\:w-1\\/2",
-              x: 50,
-              opacity: 0,
+            /* ===============================
+     LEFT CONTENT ANIMATIONS
+  ================================ */
+
+            gsap.from(".gs-badge", {
+              scrollTrigger: {
+                trigger: ".gs-badge",
+                start: "top 85%",
+              },
+              autoAlpha: 0,
+              y: 20,
+              duration: 1,
+              ease: "power2.out",
+            });
+
+            gsap.from(".gs-heading", {
+              scrollTrigger: {
+                trigger: ".gs-heading",
+                start: "top 85%",
+              },
+              autoAlpha: 0,
+              y: 40,
+              duration: 1.7,
+              ease: "power3.out",
+            });
+
+            gsap.from(".gs-subtext", {
+              scrollTrigger: {
+                trigger: ".gs-subtext",
+                start: "top 85%",
+              },
+              autoAlpha: 0,
+              y: 20,
+              duration: 2.5,
+              ease: "power2.out",
+            });
+
+            gsap.from(".gs-paragraph", {
+              scrollTrigger: {
+                trigger: ".gs-paragraph",
+                start: "top 85%",
+              },
+              autoAlpha: 0,
+              y: 25,
+              duration: 3.2,
+              ease: "power2.out",
+            });
+
+            gsap.from(".gs-cta", {
+              scrollTrigger: {
+                trigger: ".gs-cta",
+                start: "top 80%",
+              },
+              autoAlpha: 0,
+              y: 40,
+              scale: 0.97,
+              duration: 4,
+              ease: "power3.out",
+            });
+
+            /* ===============================
+     TIMELINE LINE DRAW
+  ================================ */
+
+            gsap.from(".gs-line", {
+              scrollTrigger: {
+                trigger: ".gs-line",
+                start: "top 85%",
+                end: "bottom 60%",
+                scrub: true,
+              },
+              scaleY: 0,
+              transformOrigin: "top",
+              ease: "none",
+            });
+
+            /* ===============================
+     TIMELINE STEPS (STAGGERED)
+  ================================ */
+
+            gsap.from(".gs-step", {
+              scrollTrigger: {
+                trigger: ".gs-step",
+                start: "top 85%",
+                end: "bottom 0%",
+                scrub: true,
+              },
+              autoAlpha: 0,
+              x: 100,
               duration: 0.8,
-              stagger: 0.8,
+              stagger: 0.4,
               ease: "power3.out",
             });
           </script>
 
+          <!-- Blog -->
+          <section
+            class="blog-section px-4 md:px-6 lg:px-8 py-12 bg-white overflow-hidden"
+          >
+            <div class="blog-container mx-auto">
+              <!-- Header -->
+              <div class="blog-header text-center mb-16">
+                <div class="blog-badge inline-flex items-center gap-2 mb-4">
+                  <span class="blog-icon">🎓</span>
+                  <span
+                    class="blog-label uppercase tracking-widest text-sm font-semibold"
+                  >
+                    Blog
+                  </span>
+                </div>
+
+                <h2
+                  class="blog-title text-2xl md:text-3xl lg:text-4xl font-bold mb-4"
+                >
+                  Latest News From our Blog
+                </h2>
+
+                <span class="blog-underline block mx-auto"></span>
+              </div>
+
+              <!-- Cards -->
+              <div
+                class="blog-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              >
+                <!-- Card -->
+                <article class="blog-card1">
+                  <div class="blog-image">
+                    <span class="blog-tag">Web Design</span>
+                    <img src="./assets/course-2-4.webp" alt="card1" />
+                  </div>
+
+                  <div class="blog-content">
+                    <div class="blog-meta">
+                      <span>Masum Billah</span>
+                      <span>Oct 30, 2025</span>
+                    </div>
+
+                    <h3 class="blog-heading">
+                      Leverage agile frameworks to provide
+                    </h3>
+
+                    <a href="#" class="blog-link">Learn More →</a>
+                  </div>
+                </article>
+
+                <!-- Card -->
+                <article class="blog-card2">
+                  <div class="blog-image">
+                    <span class="blog-tag">WordPress</span>
+                    <img src="./assets/course-2-2.webp" alt="card2" />
+                  </div>
+
+                  <div class="blog-content">
+                    <div class="blog-meta">
+                      <span>Deva Guru</span>
+                      <span>Oct 28, 2025</span>
+                    </div>
+
+                    <h3 class="blog-heading">
+                      Student Learning Through an Online Computer
+                    </h3>
+
+                    <a href="#" class="blog-link">Learn More →</a>
+                  </div>
+                </article>
+
+                <!-- Card -->
+                <article class="blog-card3">
+                  <div class="blog-image">
+                    <span class="blog-tag">Web Design</span>
+                    <img src="./assets/course-2-1.webp" alt="card3" />
+                  </div>
+
+                  <div class="blog-content">
+                    <div class="blog-meta">
+                      <span>James Krish</span>
+                      <span>Oct 26, 2025</span>
+                    </div>
+
+                    <h3 class="blog-heading">
+                      Online Learning Program for Students
+                    </h3>
+
+                    <a href="#" class="blog-link">Learn More →</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <style>
+            .blog-icon {
+              color: #4f46e5;
+            }
+
+            .blog-label {
+              color: #4f46e5;
+            }
+
+            .blog-underline {
+              width: 80px;
+              height: 4px;
+              background: #4f46e5;
+              border-radius: 999px;
+            }
+
+            .blog-card1,
+            .blog-card2,
+            .blog-card3 {
+              background: #fff;
+              border-radius: 20px;
+              overflow: hidden;
+              box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            }
+
+            .blog-image {
+              position: relative;
+              height: 260px;
+            }
+
+            .blog-image img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+
+            .blog-tag {
+              position: absolute;
+              top: 16px;
+              left: 16px;
+              background: #4f46e5;
+              color: white;
+              padding: 6px 14px;
+              border-radius: 999px;
+              font-size: 14px;
+              font-weight: 600;
+            }
+
+            .blog-content {
+              padding: 24px;
+            }
+
+            .blog-meta {
+              display: flex;
+              gap: 20px;
+              font-size: 14px;
+              color: #6b7280;
+              margin-bottom: 12px;
+            }
+
+            .blog-heading {
+              font-size: 20px;
+              font-weight: 700;
+              margin-bottom: 16px;
+            }
+
+            .blog-link {
+              color: #4f46e5;
+              font-weight: 600;
+            }
+          </style>
+
+          <script>
+            gsap.registerPlugin(ScrollTrigger);
+
+            /* Header animation */
+            gsap.from(".blog-header", {
+              y: 60,
+              opacity: 0,
+              duration: 2,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: ".blog-section",
+                start: "top 70%",
+              },
+            });
+
+            /* Cards stagger animation */
+            gsap.from(".blog-card1", {
+              y: 80,
+              opacity: 0,
+              scale: 0.95,
+              duration: 1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: ".blog-card1",
+                start: "top 80%",
+              },
+            });
+
+            gsap.from(".blog-card2", {
+              y: 80,
+              opacity: 0,
+              scale: 0.95,
+              duration: 3,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: ".blog-card2",
+                start: "top 80%",
+              },
+            });
+
+            gsap.from(".blog-card3", {
+              y: 80,
+              opacity: 0,
+              scale: 0.95,
+              duration: 5,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: ".blog-card3",
+                start: "top 80%",
+              },
+            });
+          </script>
+
           <!-- Testimonials Section -->
-          <section class="px-4 py-8 md:py-16 overflow-hidden">
+          <section class="px-4 md:px-6 lg:px-8 py-8 overflow-hidden">
             <div class="mx-auto text-center">
               <h3
                 data-aos="fade-up"
                 data-aos-delay="50"
-                class="text-2xl md:text-4xl lg:text-5xl uppercase font-semibold mb-6 text-gray-900 font-primary"
+                class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4 text-gray-900 font-primary"
               >
                 What Our Students Say
               </h3>
               <p
                 data-aos="zoom-in-left"
                 data-aos-delay="75"
-                class="text-gray-600 mb-12 text-lg"
+                class="text-gray-600 mb-12 text-sm md:text-lg max-w-2xl mx-auto w-full"
               >
                 Our students consistently praise the supportive learning
                 environment and expert guidance they receive throughout the
-                program. Many share that the practical, hands-on approach helped
-                them build real confidence in their skills.
+                program. Many share that the practical.
               </p>
 
               <div
-                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left mt-20 py-6"
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20 lg:gap-8 text-left mt-20 py-6"
               >
-                <div data-aos="zoom-out-right" data-aos-delay="50">
+                <div data-aos="zoom-in" data-aos-delay="500">
                   <div
                     class="text-sm border border-gray-200 pb-6 rounded-lg bg-white shadow-md hover:shadow-xl transition duration-500 ease-out"
                   >
@@ -1529,7 +1819,7 @@
                   </div>
                 </div>
 
-                <div data-aos="zoom-out" data-aos-delay="75">
+                <div data-aos="zoom-in" data-aos-delay="750">
                   <div
                     class="text-sm border border-gray-200 pb-6 rounded-lg bg-white shadow-md hover:shadow-xl transition duration-500 ease-out"
                   >
@@ -1620,7 +1910,7 @@
                   </div>
                 </div>
 
-                <div data-aos="zoom-out-left" data-aos-delay="100">
+                <div data-aos="zoom-in" data-aos-delay="1000">
                   <div
                     class="text-sm border border-gray-200 pb-6 rounded-lg bg-white shadow-md hover:shadow-xl transition duration-500 ease-out"
                   >
@@ -1714,6 +2004,190 @@
             </div>
           </section>
 
+          <!-- app  -->
+          <section
+            class="relative px-4 md:px-6 lg:px-8 py-8 md:py-12 overflow-hidden"
+          >
+            <div class="mx-auto">
+              <div
+                class="relative overflow-hidden rounded-3xl bg-[#0057D9] text-white px-4 md:px-6"
+              >
+                <!-- Decorative shapes -->
+                <div
+                  class="absolute bottom-0 left-0 w-full h-40 bg-blue-700 rounded-t-full opacity-30"
+                ></div>
+                <div
+                  class="absolute bottom-0 right-0 w-1/2 h-1/2 bg-blue-500 rotate-[-15deg] translate-x-20 translate-y-24 opacity-40"
+                ></div>
+
+                <div class="relative grid lg:grid-cols-2 gap-12 items-center">
+                  <!-- LEFT CONTENT -->
+                  <div class="space-y-6 max-w-xl py-6 app-left">
+                    <div
+                      class="app-badge flex items-center gap-2 text-sm font-semibold text-white/90"
+                    >
+                      💡 <span>Download App</span>
+                    </div>
+
+                    <h2
+                      class="app-title text-2xl md:text-3xl xl:text-4xl font-extrabold leading-tight"
+                    >
+                      Top Categories In <br />
+                      <span class="text-orange-400 relative inline-block">
+                        StackEdu
+                        <span
+                          class="absolute left-0 -bottom-2 w-full h-1 bg-orange-400 rounded-full"
+                        ></span>
+                      </span>
+                    </h2>
+
+                    <p class="app-desc text-white/80 text-lg leading-relaxed">
+                      There are many variations of passages of lorem ipsum
+                      available but majority have suffered alteration in some
+                      form.
+                    </p>
+
+                    <!-- Store Buttons -->
+                    <div class="app-buttons flex flex-wrap gap-4 pt-4">
+                      <a
+                        href="./404.html"
+                        class="flex items-center gap-3 bg-orange-400 hover:bg-orange-500 text-white px-6 py-3 rounded-full font-semibold transition app-button"
+                      >
+                        Get it on App Store
+                      </a>
+
+                      <a
+                        href="./404.html"
+                        class="flex items-center gap-3 border border-white/40 hover:bg-white/10 px-6 py-3 rounded-full font-semibold transition app-button"
+                      >
+                        Get it on Google Play
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- RIGHT VISUAL -->
+                  <div class="relative flex justify-center lg:justify-end">
+                    <!-- Phone -->
+                    <img
+                      src="./assets/app-thumb1.webp"
+                      class="relative z-40 h-fit object-cover w-full md:w-[320px] drop-shadow-2xl app-phone"
+                      alt="Phone App"
+                    />
+
+                    <!-- Rating Card -->
+                    <div
+                      class="absolute top-0 md:top-16 left-0 lg:left-6 bg-white text-gray-800 rounded-xl shadow-xl px-4 py-4 flex items-center gap-3 z-20 app-rating-card"
+                    >
+                      <div
+                        class="w-10 h-10 bg-orange-400 text-white flex items-center justify-center rounded-lg text-lg"
+                      >
+                        ⭐
+                      </div>
+                      <div>
+                        <p class="font-bold">5 Stars</p>
+                        <p class="text-sm text-gray-500">
+                          Read Our Success Stories
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <script>
+            gsap.registerPlugin(ScrollTrigger);
+
+            ScrollTrigger.config({
+              limitCallbacks: true,
+            });
+
+            /* Badge */
+            gsap.from(".app-badge", {
+              scrollTrigger: {
+                trigger: ".app-badge",
+                start: "top 85%",
+              },
+              opacity: 0,
+              y: 40,
+              duration: 0.6,
+              ease: "power2.out",
+            });
+
+            /* Title */
+            gsap.from(".app-title", {
+              scrollTrigger: {
+                trigger: ".app-title",
+                start: "top 80%",
+              },
+              opacity: 0,
+              y: 60,
+              duration: 1.1,
+              ease: "power4.out",
+            });
+
+            /* Description */
+            gsap.from(".app-desc", {
+              scrollTrigger: {
+                trigger: ".app-desc",
+                start: "top 80%",
+              },
+              opacity: 0,
+              y: 80,
+              duration: 0.9,
+              ease: "power3.out",
+            });
+
+            // Performance optimization
+            gsap.set(".app-button", {
+              willChange: "transform, opacity",
+              force3D: true,
+            });
+
+            /* Buttons */
+            gsap.from(".app-button", {
+              scrollTrigger: {
+                trigger: ".app-buttons",
+                start: "top 80%",
+                once: true,
+              },
+              opacity: 0,
+              autoAlpha: 0, // instead of opacity: 0
+              y: 100,
+              scale: 0.95,
+              stagger: 0.5,
+              duration: 0.8,
+              ease: "power3.out",
+            });
+
+            /* Phone */
+            gsap.from(".app-phone", {
+              scrollTrigger: {
+                trigger: ".app-phone",
+                start: "top 75%",
+              },
+              opacity: 0,
+              x: 300,
+              scale: 0.92,
+              duration: 3,
+              ease: "power4.out",
+            });
+
+            /* Rating Card */
+            gsap.from(".app-rating-card", {
+              scrollTrigger: {
+                trigger: ".app-rating-card",
+                start: "top 80%",
+              },
+              opacity: 0,
+              y: -40,
+              scale: 0.85,
+              duration: 0.9,
+              ease: "back.out(1.8)",
+            });
+          </script>
+
           <!-- footer -->
           <footer class="px-4 md:px-6 lg:px-8 overflow-hidden">
             <div
@@ -1806,25 +2280,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div class="overflow-hidden">
-              <!-- Google Map -->
-              <!-- <div
-            data-aos="fade-up"
-            data-aos-delay="200"
-            class="rounded-2xl w-full overflow-hidden shadow-lg mb-3"
-          >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.1616097152896!2d78.1739798!3d11.682956599999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babefef7fd970bb%3A0xe11aef1a71994f9!2sStackly!5e0!3m2!1sen!2sin!4v1755667813665!5m2!1sen!2sin"
-              width="100%"
-              height="250"
-              style="border: 0"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div> -->
             </div>
 
             <div
@@ -1929,7 +2384,6 @@
       </script>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollSmoother.min.js"></script>
     <script>
       gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -1939,6 +2393,8 @@
         smooth: 5,
         effects: true,
         normalizeScroll: true,
+        ignoreMobile: false,
+        smoothTouch: 0.5, // softer smoothing for touch devices
       });
     </script>
 
@@ -1958,7 +2414,7 @@
         delay: 200, // default delay for all elements
         once: true,
         mirror: true,
-        offset: window.innerHeight / 3,
+        // offset: window.innerHeight / 3,
       });
 
       // sub-form reset

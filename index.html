@@ -40,6 +40,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollSmoother.min.js"></script>
+
     <!-- Google fonts Link -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -191,6 +193,32 @@
           box-shadow: 30px 0 0 #97bf0d;
           margin-top: 0;
         }
+      }
+    </style>
+
+    <style>
+      /* Firefox */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #2563eb #f1f5f9;
+      }
+      /* ===== Chrome, Edge, Safari ===== */
+      ::-webkit-scrollbar {
+        width: 10px; /* scrollbar width */
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9; /* light slate */
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: #2563eb; /* blue-600 */
+        border-radius: 999px; /* pill shape */
+        border: 2px solid #f1f5f9; /* spacing gap */
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: #1d4ed8; /* blue-700 on hover */
       }
     </style>
   </head>
@@ -658,11 +686,11 @@
                 </div>
 
                 <!-- RIGHT CONTENT -->
-                <div class="relative hidden lg:flex hero-right">
+                <div class="relative flex hero-right">
                   <div class="flex items-center justify-end w-full">
                     <!-- Course Card -->
                     <div
-                      class="bg-white rounded-2xl shadow-xl p-4 w-80 hero-card"
+                      class="bg-white rounded-2xl shadow-xl p-4 w-full lg:w-80 hero-card"
                     >
                       <div class="relative">
                         <img
@@ -1471,7 +1499,7 @@
               list.forEach((course) => {
                 container.innerHTML += `
             <div data-aos="zoom-in" data-aos-delay="600">
-                <div class="course-card bg-white rounded-2xl p-6 flex flex-col-reverse lg:flex-row gap-6 border border-slate-200">
+                <div class="course-card relative bg-white rounded-2xl p-6 flex flex-col-reverse lg:flex-row gap-6 border border-slate-200 after:content-[""]  after:absolute before:content-[""] before:absolute after:bg-green-300 before:bg-yellow-200 before:w-full before:h-[400px] after:w-full after:h-[400px]">
 
                 <div class="flex-1">
                   <div class="flex justify-between items-center mb-2">
@@ -2031,8 +2059,6 @@
           <footer class="px-4 md:px-6 lg:px-8 overflow-hidden">
             <div
               class="grid grid-cols-1 xsmd:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full gap-12 md:gap-3 pb-6"
-              data-aos="fade-up"
-              data-aos-delay="150"
             >
               <div class="flex flex-col items-start space-y-2">
                 <img class="h-8" src="./assets/logo.webp" alt="logo" />
@@ -2242,7 +2268,7 @@
       </script>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollSmoother.min.js"></script>
+    <!-- smooth scroll gsap -->
     <script>
       gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -2263,7 +2289,7 @@
       referrerpolicy="no-referrer"
     ></script>
 
-    <!--  script -->
+    <!-- form & mobile navbar script -->
     <script>
       AOS.init({
         easing: "ease-out-quad",
@@ -2298,6 +2324,7 @@
       });
     </script>
 
+    <!-- loader js -->
     <script>
       window.addEventListener("load", () => {
         const loader = document.getElementById("appLoader");
@@ -2308,7 +2335,7 @@
         setTimeout(() => {
           loader.classList.add("hidden");
           content.classList.remove("opacity-0");
-        }, 500); // matches Tailwind fade duration
+        }, 6900); // matches Tailwind fade duration
       });
     </script>
   </body>
