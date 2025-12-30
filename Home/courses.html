@@ -138,7 +138,7 @@
     <!-- Navbar  -->
     <header class="sticky top-0 z-50 backdrop-blur w-full mx-auto">
       <div
-        class="flex items-center justify-between px-4 h-16 bg-white border border-black/10"
+        class="flex items-center justify-between px-4 md:px-8 lg:px-12 h-16 bg-white border border-black/10"
       >
         <!-- Logo -->
         <a class="" href="./index.html">
@@ -346,15 +346,19 @@
 
     <!-- Hero Section -->
     <main
-      class="py-8 md:py-16 px-4 overflow-hidden text-center"
+      class="py-8 md:py-16 px-4 md:px-8 lg:px-12 overflow-hidden text-center"
     >
-      <h2 data-aos="zoom-in" data-aos-delay="50"
+      <h2
+        data-aos="zoom-in"
+        data-aos-delay="50"
         class="text-2xl md:text-3xl xl:text-5xl font-bold uppercase font-primary mb-4"
       >
         All Courses
       </h2>
       <!-- breadcrumbs -->
-      <div data-aos="zoom-in" data-aos-delay="75"
+      <div
+        data-aos="zoom-in"
+        data-aos-delay="75"
         class="flex flex-wrap items-center justify-center space-x-2 text-lg md:text-xl text-gray-500 font-medium py-2 px-4 w-fit mx-auto rounded-lg mb-4"
       >
         <a href="./index.html" type="button" aria-label="Home"> Home </a>
@@ -373,7 +377,11 @@
         <a href="./courses.html" class="text-indigo-500">Courses</a>
       </div>
 
-      <p data-aos="zoom-in" data-aos-delay="100" class="text-gray-600 mx-auto text-sm md:text-lg">
+      <p
+        data-aos="zoom-in"
+        data-aos-delay="100"
+        class="text-gray-600 mx-auto text-sm md:text-lg"
+      >
         We provide top-tier educational and digital services to empower
         students, educators, and organizations.
       </p>
@@ -381,7 +389,7 @@
 
     <div
       id="courses-redirect"
-      class="scroll-mt-16 mx-auto py-8 px-4 overflow-hidden text-center"
+      class="scroll-mt-16 mx-auto py-8 px-4 md:px-8 lg:px-12 overflow-hidden text-center"
     >
       <!-- Search & Filter -->
       <div class="flex flex-wrap items-center gap-4 mb-6 max-w-5xl mx-auto">
@@ -420,7 +428,7 @@
     <!-- Popup -->
     <div id="popupOverlay" class="hidden">
       <div
-        class="fixed inset-0 bg-black/50 h-screen flex items-center justify-center px-3 z-50"
+        class="fixed inset-0 bg-black/50 h-screen flex items-center justify-center px-4 md:px-8 lg:px-12 z-50"
       >
         <div
           id="popupCard"
@@ -688,13 +696,43 @@
     </script>
 
     <!-- footer -->
-    <footer class="px-4 mt-10 overflow-hidden">
+    <footer class="px-4 md:px-8 lg:px-12 mt-10 overflow-hidden">
       <div class="flex justify-between flex-wrap w-full md:gap-20 gap-8 pb-6">
         <div class="md:max-w-96 flex flex-col items-start space-y-2">
           <img class="h-8" src="../assets/logo.webp" alt="logo" />
           <p class="mt-2 text-lg">
-            CourseHub is the global online learning platform that offers anyone, anywhere access to online courses and degrees from world-class universities and companies.
+            CourseHub is the global online learning platform that offers anyone,
+            anywhere access to online courses and degrees from world-class
+            universities and companies.
           </p>
+
+          <!-- Social Icons -->
+          <div class="flex gap-4 mt-4">
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
         </div>
 
         <div class="flex flex-col lg:items-center lg:justify-center">
@@ -719,6 +757,9 @@
             >
             <a class="hover:text-slate-600 transition" href="./contact.html"
               >Contact us</a
+            >
+            <a class="hover:text-slate-600 transition" href="./dashboard.html"
+              >Dashboard</a
             >
           </div>
         </div>

@@ -105,7 +105,7 @@
     <!-- Navbar  -->
     <header class="sticky top-0 z-50 backdrop-blur w-full mx-auto">
       <div
-        class="flex items-center justify-between px-4 h-16 bg-white border border-black/10"
+        class="flex items-center justify-between px-4 md:px-8 lg:px-12 h-16 bg-white border border-black/10"
       >
         <!-- Logo -->
         <a class="" href="./index.html">
@@ -131,7 +131,10 @@
             >
               <!-- Home 2 -->
               <li>
-                <a href="./Home/index.html" class="block px-4 py-2 bg-white z-40">
+                <a
+                  href="./Home/index.html"
+                  class="block px-4 py-2 bg-white z-40"
+                >
                   Home 2
                 </a>
               </li>
@@ -313,7 +316,7 @@
 
     <!-- Home -->
     <main
-      class="bg-linear-to-br from-primary/30 to-white px-4 py-8 md:py-16 xl:py-32 overflow-hidden relative"
+      class="bg-linear-to-br from-primary/30 to-white px-4 md:px-8 lg:px-12 py-8 md:py-16 xl:py-32 overflow-hidden relative"
     >
       <!-- back img -->
       <div class="absolute inset-0 w-full h-full">
@@ -366,7 +369,7 @@
     </main>
 
     <!-- Contact Cards -->
-    <section class="px-4 mx-auto py-16 gap-8 overflow-hidden">
+    <section class="px-4 md:px-8 lg:px-12 mx-auto py-16 gap-8 overflow-hidden">
       <div
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between items-start md:items-center gap-6 bg-white py-4 rounded-2xl w-full overflow-hidden"
       >
@@ -455,7 +458,7 @@
 
     <!-- Contact Form + Map -->
     <section
-      class="mx-auto grid lg:grid-cols-2 gap-12 px-4 pb-20 overflow-hidden"
+      class="mx-auto grid lg:grid-cols-2 gap-12 px-4 md:px-8 lg:px-12 pb-20 overflow-hidden"
     >
       <!-- Form -->
       <div
@@ -527,7 +530,9 @@
     </section>
 
     <!-- Faq -->
-    <section class="px-4 py-8 md:py-16 overflow-hidden bg-white">
+    <section
+      class="px-4 md:px-8 lg:px-12 py-8 md:py-16 overflow-hidden bg-white"
+    >
       <div class="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
         <!-- LEFT -->
         <div
@@ -703,7 +708,7 @@
     </script>
 
     <!-- footer -->
-    <footer class="px-4 mt-10 overflow-hidden">
+    <footer class="px-4 md:px-8 lg:px-12 mt-10 overflow-hidden">
       <div
         class="flex justify-between flex-wrap w-full md:gap-20 gap-8 pb-6"
         data-aos="fade-up"
@@ -712,8 +717,38 @@
         <div class="md:max-w-96 flex flex-col items-start space-y-2">
           <img class="h-8" src="./assets/logo.webp" alt="logo" />
           <p class="mt-2 text-lg">
-            CourseHub is the global online learning platform that offers anyone, anywhere access to online courses and degrees from world-class universities and companies.
+            CourseHub is the global online learning platform that offers anyone,
+            anywhere access to online courses and degrees from world-class
+            universities and companies.
           </p>
+
+          <!-- Social Icons -->
+          <div class="flex gap-4 mt-4">
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
         </div>
 
         <div class="flex flex-col lg:items-center lg:justify-center">
@@ -738,6 +773,9 @@
             >
             <a class="hover:text-slate-600 transition" href="./contact.html"
               >Contact us</a
+            >
+            <a class="hover:text-slate-600 transition" href="./dashboard.html"
+              >Dashboard</a
             >
           </div>
         </div>
@@ -832,8 +870,6 @@
       document
         .getElementById("contactForm")
         .addEventListener("submit", function (e) {
-       
-
           // Clear all fields
           this.reset();
 

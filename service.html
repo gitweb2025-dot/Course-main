@@ -105,7 +105,7 @@
     <!-- Navbar  -->
     <header class="sticky top-0 z-50 backdrop-blur w-full mx-auto">
       <div
-        class="flex items-center justify-between px-4 h-16 bg-white border border-black/10"
+        class="flex items-center justify-between px-4 md:px-8 lg:px-12 h-16 bg-white border border-black/10"
       >
         <!-- Logo -->
         <a class="" href="./index.html">
@@ -131,7 +131,10 @@
             >
               <!-- Home 2 -->
               <li>
-                <a href="./Home/index.html" class="block px-4 py-2 bg-white z-40">
+                <a
+                  href="./Home/index.html"
+                  class="block px-4 py-2 bg-white z-40"
+                >
                   Home 2
                 </a>
               </li>
@@ -313,7 +316,7 @@
 
     <!-- Home -->
     <main
-      class="bg-linear-to-br from-primary/30 to-white px-4 py-8 md:py-16 xl:py-32 overflow-hidden"
+      class="bg-linear-to-br from-primary/30 to-white px-4 md:px-8 lg:px-12 py-8 md:py-16 xl:py-32 overflow-hidden"
     >
       <div class="flex flex-col justify-center items-center text-center gap-3">
         <h1
@@ -359,7 +362,7 @@
 
     <!-- Services Grid -->
     <div
-      class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 px-4 py-8 md:py-16 overflow-hidden"
+      class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 px-4 md:px-8 lg:px-12 py-8 md:py-16 overflow-hidden"
     >
       <!-- Single Service Card -->
       <div data-aos="zoom-in" data-aos-delay="50">
@@ -476,7 +479,9 @@
     </div>
 
     <!-- Faq -->
-    <section class="px-4 py-8 md:py-16 overflow-hidden bg-white">
+    <section
+      class="px-4 md:px-8 lg:px-12 py-8 md:py-16 overflow-hidden bg-white"
+    >
       <div class="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
         <!-- LEFT -->
         <div
@@ -652,7 +657,7 @@
     </script>
 
     <!-- footer -->
-    <footer class="px-4 mt-10 overflow-hidden">
+    <footer class="px-4 md:px-8 lg:px-12 mt-10 overflow-hidden">
       <div
         class="flex justify-between flex-wrap w-full md:gap-20 gap-8 pb-6"
         data-aos="fade-up"
@@ -661,8 +666,38 @@
         <div class="md:max-w-96 flex flex-col items-start space-y-2">
           <img class="h-8" src="./assets/logo.webp" alt="logo" />
           <p class="mt-2 text-lg">
-           CourseHub is the global online learning platform that offers anyone, anywhere access to online courses and degrees from world-class universities and companies.
+            CourseHub is the global online learning platform that offers anyone,
+            anywhere access to online courses and degrees from world-class
+            universities and companies.
           </p>
+
+          <!-- Social Icons -->
+          <div class="flex gap-4 mt-4">
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
         </div>
 
         <div class="flex flex-col lg:items-center lg:justify-center">
@@ -670,16 +705,17 @@
             <h2 class="font-semibold mb-5 text-primary uppercase">
               Easier Acces
             </h2>
-            <a class="hover:text-slate-600 transition" href="">Home</a>
-            <a class="hover:text-slate-600 transition" href="">About us</a>
-            <a class="hover:text-slate-600 transition" href=""
+            <a class="hover:text-slate-600 transition" href="./index.html">Home</a>
+            <a class="hover:text-slate-600 transition" href="./about.html">About us</a>
+            <a class="hover:text-slate-600 transition" href="./service.html"
               >Services<span
                 class="text-xs text-white bg-gray-600 rounded-bl-xl rounded-tr-xl ml-2 px-2 py-1"
                 >New</span
               ></a
             >
-            <a class="hover:text-slate-600 transition" href="">Courses</a>
-            <a class="hover:text-slate-600 transition" href="">Contact us</a>
+            <a class="hover:text-slate-600 transition" href="./courses.html">Courses</a>
+            <a class="hover:text-slate-600 transition" href="./contact.html">Contact us</a>
+            <a class="hover:text-slate-600 transition" href="./dashboard.html">Dashboard</a>
           </div>
         </div>
 

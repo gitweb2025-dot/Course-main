@@ -105,7 +105,7 @@
     <!-- Navbar  -->
     <header class="sticky top-0 z-50 backdrop-blur w-full mx-auto">
       <div
-        class="flex items-center justify-between px-4 h-16 bg-white border border-black/10"
+        class="flex items-center justify-between px-4 md:px-8 lg:px-12 h-16 bg-white border border-black/10"
       >
         <!-- Logo -->
         <a class="" href="./index.html">
@@ -131,7 +131,10 @@
             >
               <!-- Home 2 -->
               <li>
-                <a href="./Home/index.html" class="block px-4 py-2 bg-white z-40">
+                <a
+                  href="./Home/index.html"
+                  class="block px-4 py-2 bg-white z-40"
+                >
                   Home 2
                 </a>
               </li>
@@ -354,7 +357,7 @@
     </main>
 
     <!-- Home -->
-    <section class="px-4 py-8 overflow-hidden">
+    <section class="px-4 md:px-8 lg:px-12 py-8 overflow-hidden">
       <!-- Who We Are Section -->
       <div class="mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <div data-aos="zoom-in-left" data-aos-delay="75">
@@ -412,7 +415,7 @@
     </section>
 
     <!-- Mission & Vission -->
-    <section class="px-4 py-8 overflow-hidden">
+    <section class="px-4 md:px-8 lg:px-12 py-8 overflow-hidden">
       <div class="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
         <div
           data-aos="zoom-in-right"
@@ -443,7 +446,7 @@
     <!-- stats -->
     <section
       id="impact"
-      class="py-8 md:py-16 lg:py-24 px-4 overflow-hidden overflow-x-hidden"
+      class="py-8 md:py-16 lg:py-24 px-4 md:px-8 lg:px-12 overflow-hidden overflow-x-hidden"
     >
       <div class="text-center pb-10 space-y-4">
         <h1
@@ -540,7 +543,7 @@
     </section>
 
     <!-- why choose us -->
-    <section class="px-4 py-8 overflow-hidden text-center">
+    <section class="px-4 md:px-8 lg:px-12 py-8 overflow-hidden text-center">
       <h3
         data-aos="zoom-in-right"
         data-aos-delay="75"
@@ -605,7 +608,7 @@
     </section>
 
     <!-- Meet Our Team -->
-    <section class="px-4 py-8 overflow-hidden text-center">
+    <section class="px-4 md:px-8 lg:px-12 py-8 overflow-hidden text-center">
       <h1
         data-aos="zoom-in"
         data-aos-delay="50"
@@ -723,7 +726,7 @@
     </section>
 
     <!-- footer -->
-    <footer class="px-4 mt-10 md:mt-20 overflow-hidden">
+    <footer class="px-4 md:px-8 lg:px-12 mt-10 md:mt-20 overflow-hidden">
       <div
         class="flex justify-between flex-wrap w-full md:gap-20 gap-8 pb-6"
         data-aos="fade-up"
@@ -732,8 +735,38 @@
         <div class="md:max-w-96 flex flex-col items-start space-y-2">
           <img class="h-8" src="./assets/logo.webp" alt="logo" />
           <p class="mt-2 text-lg">
-             CourseHub is the global online learning platform that offers anyone, anywhere access to online courses and degrees from world-class universities and companies.
+            CourseHub is the global online learning platform that offers anyone,
+            anywhere access to online courses and degrees from world-class
+            universities and companies.
           </p>
+
+          <!-- Social Icons -->
+          <div class="flex gap-4 mt-4">
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="./404.html"
+              class="text-gray-400 hover:text-primary text-xl"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
         </div>
 
         <div class="flex flex-col lg:items-center lg:justify-center">
@@ -758,6 +791,9 @@
             >
             <a class="hover:text-slate-600 transition" href="./contact.html"
               >Contact us</a
+            >
+            <a class="hover:text-slate-600 transition" href="./dashboard.html"
+              >Dashboard</a
             >
           </div>
         </div>
