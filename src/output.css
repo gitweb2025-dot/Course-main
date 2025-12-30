@@ -724,6 +724,12 @@
   .max-h-0 {
     max-height: calc(var(--spacing) * 0);
   }
+  .min-h-\[1\] {
+    min-height: 1;
+  }
+  .min-h-\[100vh\] {
+    min-height: 100vh;
+  }
   .min-h-screen {
     min-height: 100vh;
   }
@@ -3022,11 +3028,6 @@
   .xl\:grid-cols-5 {
     @media (width >= 80rem) {
       grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-  }
-  .xl\:grid-cols-6 {
-    @media (width >= 80rem) {
-      grid-template-columns: repeat(6, minmax(0, 1fr));
     }
   }
   .xl\:py-32 {
