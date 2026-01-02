@@ -850,12 +850,18 @@
       >
         <div>
           <p class="pt-4 text-lg pb-4">
-            Copyright 2025 © <a href="./404.html">Slackly</a>. All Right
-            Reserved.
+            Copyright <span id="current-year"></span> ©
+            <a href="./404.html">Slackly</a>. All Right Reserved.
           </p>
         </div>
       </div>
     </footer>
+
+    <!-- year js -->
+    <script>
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+    </script>
 
     <!-- Aos Animation  -->
     <script

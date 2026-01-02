@@ -310,7 +310,7 @@
 
     <!-- KPI Section -->
     <section
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-6 mb-10 px-4 md:px-8 lg:px-12 py-6 overflow-hidden"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-10 px-4 md:px-8 lg:px-12 py-6 overflow-hidden"
     >
       <div
         class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition border border-primary/20"
@@ -700,12 +700,18 @@
       >
         <div>
           <p class="pt-4 text-lg pb-4">
-            Copyright 2025 © <a href="./404.html">Stackly</a>. All Right
+            Copyright <span id="current-year"></span> © <a href="./404.html">Stackly</a>. All Right
             Reserved.
           </p>
         </div>
       </div>
     </footer>
+
+    <!-- year js -->
+    <script>
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+    </script>
 
     <script>
       const hamburger = document.getElementById("hamburger");

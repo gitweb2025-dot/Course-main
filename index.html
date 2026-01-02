@@ -621,7 +621,7 @@
               });
             </script>
           </header>
-          
+
           <!-- Home -->
           <section
             id="heroSection"
@@ -1442,10 +1442,10 @@
           <script>
             const courses = [
               {
-                title: "Learn from the Best – Student Favorite Programs",
+                title: "Learn from the Best – Student Programs",
                 category: "featured",
                 tag: "Development",
-                author: "William",
+                author: "Samantha",
                 price: 19,
                 oldPrice: 28,
                 rating: 4.6,
@@ -1455,10 +1455,10 @@
                 image: "./assets/course-2-1.webp",
               },
               {
-                title: "Design Thinking Researching for Better UX",
+                title: "Design Researching for Better UX",
                 category: "popular",
                 tag: "Arts",
-                author: "Samantha",
+                author: "William",
                 price: 20,
                 oldPrice: 35,
                 rating: 4.4,
@@ -1468,7 +1468,7 @@
                 image: "./assets/course-2-2.webp",
               },
               {
-                title: "Discover Highly Rated Learning Programs",
+                title: " Highly Rated Learning Programs",
                 category: "trending",
                 tag: "Design",
                 author: "Claire",
@@ -1484,7 +1484,7 @@
                 title: "Boost Your Skills with Popular Courses",
                 category: "popular",
                 tag: "Design",
-                author: "Shannon",
+                author: "Priyanka",
                 price: 59,
                 oldPrice: 80,
                 rating: 4.9,
@@ -1505,7 +1505,7 @@
               list.forEach((course) => {
                 container.innerHTML += `
             <div data-aos="zoom-in" data-aos-delay="600">
-                <div class="course-card relative bg-white rounded-2xl p-6 flex flex-col-reverse lg:flex-row gap-6 border border-slate-200 after:content-[""]  after:absolute before:content-[""] before:absolute after:bg-green-300 before:bg-yellow-200 before:w-full before:h-[400px] after:w-full after:h-[400px]">
+                <div class="course-cards relative bg-white rounded-2xl p-6 flex flex-col-reverse lg:flex-row gap-6 border border-slate-200 after:content-[""]  after:absolute before:content-[""] before:absolute after:bg-green-300 before:bg-yellow-200 before:w-full before:h-[400px] after:w-full after:h-[400px]">
 
                 <div class="flex-1">
                   <div class="flex justify-between items-center mb-2">
@@ -1552,7 +1552,7 @@
 
           <script>
             function animateCards() {
-              gsap.from(".course-card", {
+              gsap.from(".course-cards", {
                 opacity: 0,
                 y: 40,
                 scale: 0.96,
@@ -1574,7 +1574,7 @@
                 tab.classList.add("text-primary", "active");
                 const filter = tab.dataset.filter;
 
-                gsap.to(".course-card", {
+                gsap.to(".course-cards", {
                   opacity: 0,
                   y: 20,
                   duration: 0.25,
@@ -1751,6 +1751,196 @@
             </a>
           </section>
 
+          <!-- our services -->
+          <section class="relative px-4 md:px-8 lg:px-12 py-12 overflow-hidden">
+            <div
+              class="relative rounded-[36px] px-4 py-8 md:p-10 bg-blue-950 text-white course-wrap"
+            >
+              <!-- Header -->
+              <div
+                class="flex flex-col lg:flex-row justify-between gap-12 mb-20"
+              >
+                <div class="course-left">
+                  <p
+                    class="flex items-center gap-3 font-semibold mb-4 uppercase"
+                  >
+                    OUR Services
+                  </p>
+
+                  <h2
+                    class="text-xl md:text-2xl lg:text-5xl leading-[1.05] font-primary italic"
+                  >
+                    Your Journey Starts<br />
+                    In The <span class="font-serif opacity-80">Classroom</span>
+                  </h2>
+                </div>
+
+                <div class="max-w-md course-right">
+                  <p class="text-white/80 mb-6">
+                    We provide top-tier digital learning solutions with a
+                    combination of creativity and modern technology.
+                  </p>
+
+                  <div>
+                    <a
+                      href="./404.html"
+                      class="flex items-center gap-4 text-white/90 px-8 py-4 rounded-full bg-white/10 w-fit relative group overflow-hidden"
+                    >
+                      View More
+                      <span
+                        class="bg-white/30 size-10 flex justify-center items-center rounded-full transform group-hover:translate-x-2 transition-transform duration-700 ease-out"
+                      >
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </span>
+                      <span
+                        class="w-full h-full absolute bg-linear-to-br from-sky-400 to-indigo-600 rounded-full inset-0 z-[-1] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"
+                      ></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Cards -->
+              <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-end">
+                <!-- Card 1 -->
+                <div
+                  class="bg-white/10 backdrop-blur-md px-4 py-8 lg:p-10 rounded-2xl border border-white/10 course-card relative group overflow-hidden"
+                >
+                  <!-- overlay effect -->
+                  <span
+                    class="w-full h-full absolute inset-0 bg-linear-to-br from-sky-400 to-indigo-600 rounded-full scale-0 group-hover:scale-150 transition-transform duration-700 ease-out z-[-1]"
+                  ></span>
+
+                  <div
+                    class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center mb-6"
+                  >
+                    <i class="fa-solid fa-chart-line text-xl"></i>
+                  </div>
+
+                  <h3 class="text-xl font-semibold mb-3">
+                    Business & Economy Course
+                  </h3>
+                  <p class="text-white/70 mb-10">
+                    Learn how global markets work and develop strategic thinking
+                    skills to make smarter business decisions to make success.
+                  </p>
+
+                  <a
+                    href="./404.html"
+                    class="bg-white text-blue-950 group-hover:text-blue-800 px-8 py-4 rounded-full font-medium transition duration-500 ease-in-out"
+                  >
+                    Read More
+                  </a>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                  class="bg-[#fff4f6] text-[#2b1114] px-4 py-8 lg:p-10 rounded-2xl course-card relative group overflow-hidden"
+                >
+                  <!-- overlay effect -->
+                  <span
+                    class="w-full h-full absolute inset-0 bg-linear-to-br from-sky-400 to-indigo-600 rounded-full scale-0 group-hover:scale-150 transition-transform duration-700 ease-out z-[-1]"
+                  ></span>
+                  <div
+                    class="w-14 h-14 rounded-full bg-primary group-hover:bg-white group-hover:text-blue-950 text-white flex items-center justify-center mb-6 transition duration-500 ease-in-out"
+                  >
+                    <i class="fa-solid fa-language text-xl"></i>
+                  </div>
+
+                  <h3
+                    class="text-xl font-semibold mb-3 group-hover:text-white transition duration-500 ease-in-out"
+                  >
+                    Advanced English Course
+                  </h3>
+                  <p
+                    class="text-gray-600 group-hover:text-white/80 mb-10 transition duration-500 ease-in-out"
+                  >
+                    Build fluency, confidence, and professional communication
+                    skills with expert-led lessons and real-world practice.
+                  </p>
+
+                  <a
+                    href="./404.html"
+                    class="bg-blue-950 text-white group-hover:text-blue-950 group-hover:bg-white px-8 py-4 rounded-full transition duration-500 ease-in-out"
+                  >
+                    Read More
+                  </a>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                  class="bg-[#fff4f6] text-[#2b1114] px-4 py-8 lg:p-10 rounded-2xl course-card relative group overflow-hidden"
+                >
+                  <!-- overlay effect -->
+                  <span
+                    class="w-full h-full absolute inset-0 bg-linear-to-br from-sky-400 to-indigo-600 rounded-full scale-0 group-hover:scale-150 transition-transform duration-700 ease-out z-[-1]"
+                  ></span>
+
+                  <div
+                    class="w-14 h-14 rounded-full bg-primary group-hover:bg-white group-hover:text-blue-950 text-white flex items-center justify-center mb-6 transition duration-500 ease-in-out"
+                  >
+                    <i class="fa-solid fa-pen-nib text-xl"></i>
+                  </div>
+
+                  <h3
+                    class="text-xl font-semibold mb-3 group-hover:text-white transition duration-500 ease-in-out"
+                  >
+                    Graphic Design to Master
+                  </h3>
+                  <p
+                    class="text-gray-600 group-hover:text-white/80 transition duration-500 ease-in-out mb-10"
+                  >
+                    Become a professional designer by mastering layout, color,
+                    typography, and modern design tools through hands-on
+                    projects.
+                  </p>
+
+                  <a
+                    href="./404.html"
+                    class="bg-blue-950 text-white group-hover:bg-white group-hover:text-blue-950 px-8 py-4 rounded-full transition duration-500 ease-in-out"
+                  >
+                    Read More
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <script>
+            gsap.registerPlugin(ScrollTrigger);
+
+            const tl = gsap.timeline({
+              scrollTrigger: {
+                trigger: ".course-wrap",
+                start: "top 75%",
+                toggleActions: "play none none none",
+              },
+            });
+
+            tl.from(".course-left", {
+              y: 60,
+              opacity: 0,
+              duration: 1,
+              ease: "power4.out",
+            })
+              .from(
+                ".course-right",
+                { y: 40, opacity: 0, duration: 0.8 },
+                "-=0.6"
+              )
+              .from(
+                ".course-card",
+                {
+                  y: 80,
+                  opacity: 0,
+                  stagger: 0.2,
+                  duration: 1,
+                  ease: "power3.out",
+                },
+                "-=0.4"
+              );
+          </script>
+
           <!-- Events -->
           <section class="mx-auto px-4 md:px-8 lg:px-12 py-12 overflow-hidden">
             <!-- Heading -->
@@ -1779,7 +1969,7 @@
               <!-- Card 1 -->
               <div data-aos="zoom-in" data-aos-delay="300">
                 <div
-                  class="flex flex-col xllg:flex-row items-center gap-6 border border-dashed border-indigo-300 rounded-2xl p-6"
+                  class="flex flex-col xllg:flex-row items-start xllg:items-center gap-6 border border-dashed border-indigo-300 rounded-2xl p-6"
                 >
                   <img
                     src="./assets/home1-1.webp"
@@ -1796,13 +1986,12 @@
 
                     <div class="mb-2 space-y-0.5">
                       <h3 class="text-xl font-semibold text-gray-900">
-                        Festival of Architecture and Interior
+                        Festival of Architecture
                       </h3>
 
                       <p class="text-sm text-black/60">
                         Webinars, live Q&A sessions, virtual lectures, group
-                        discussions, guest speaker talks live event
-                        presentations.
+                        discussions, talks live event presentations.
                       </p>
                     </div>
 
@@ -1824,7 +2013,7 @@
               <!-- Card 2 -->
               <div data-aos="zoom-in" data-aos-delay="400">
                 <div
-                  class="flex flex-col xllg:flex-row items-center gap-6 border border-dashed border-indigo-300 rounded-2xl p-6"
+                  class="flex flex-col xllg:flex-row items-start xllg:items-center gap-6 border border-dashed border-indigo-300 rounded-2xl p-6"
                 >
                   <img
                     src="./assets/home2-2.webp"
@@ -1868,7 +2057,7 @@
               <!-- Card 3 -->
               <div data-aos="zoom-in" data-aos-delay="500">
                 <div
-                  class="flex flex-col xllg:flex-row items-center gap-6 border border-dashed border-indigo-300 rounded-2xl p-6"
+                  class="flex flex-col xllg:flex-row items-start xllg:items-center gap-6 border border-dashed border-indigo-300 rounded-2xl p-6"
                 >
                   <img
                     src="./assets/home3-3.webp"
@@ -1913,7 +2102,7 @@
               <!-- Card 4 -->
               <div data-aos="zoom-in" data-aos-delay="600">
                 <div
-                  class="flex flex-col xllg:flex-row items-center gap-6 border border-dashed border-indigo-300 rounded-2xl p-6"
+                  class="flex flex-col xllg:flex-row items-start xllg:items-center gap-6 border border-dashed border-indigo-300 rounded-2xl p-6"
                 >
                   <img
                     src="./assets/home4-4.webp"
@@ -1930,7 +2119,7 @@
 
                     <div class="mb-2 space-y-0.5">
                       <h3 class="text-xl font-semibold text-gray-900">
-                        Immersive Experience in Architecture
+                        Experience in Architecture
                       </h3>
 
                       <p class="text-sm text-black/60">
@@ -2210,8 +2399,8 @@
             >
               <div>
                 <p class="pt-4 text-lg pb-4">
-                  Copyright 2025 © <a href="./404.html">Stackly</a>. All Right
-                  Reserved.
+                  Copyright <span id="current-year"></span> ©
+                  <a href="./404.html">Stackly</a>. All Right Reserved.
                 </p>
               </div>
             </div>
@@ -2306,6 +2495,12 @@
         });
       </script>
     </div>
+
+    <!-- year js -->
+    <script>
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+    </script>
 
     <!-- smooth scroll gsap -->
     <script>

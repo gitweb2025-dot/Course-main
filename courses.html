@@ -398,7 +398,7 @@
 
     <!-- Pagination -->
     <div
-      class="max-w-7xl mx-auto mt-10 px-4 md:px-8 lg:px-12 flex justify-center gap-2 overflow-hidden"
+      class="mx-auto mt-10 px-4 md:px-8 lg:px-12 flex justify-center gap-2 overflow-hidden"
       id="pagination"
     ></div>
 
@@ -733,7 +733,7 @@
           for (let i = 1; i <= pages; i++) {
             const btn = document.createElement("button");
             btn.textContent = i;
-            btn.className = `px-4 py-2 rounded-lg ${
+            btn.className = `px-4 py-2 rounded-lg cursor-pointer ${
               i === currentPage ? "bg-blue-600 text-white" : "bg-white border"
             }`;
             btn.addEventListener("click", () => {
@@ -1000,12 +1000,18 @@
       >
         <div>
           <p class="pt-4 text-lg pb-4">
-            Copyright 2025 © <a href="./404.html">Stackly</a>. All Right
-            Reserved.
+            Copyright <span id="current-year"></span> ©
+            <a href="./404.html">Stackly</a>. All Right Reserved.
           </p>
         </div>
       </div>
     </footer>
+
+    <!-- year js -->
+    <script>
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+    </script>
 
     <!-- Aos Animation  -->
     <script
